@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .authenticated-container {
   display: flex;
-  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+} */
+
+.add-root-category-btn {
+  font-size: 50px;
+  margin: 20px 0 0 20px;
+  padding: 5px;
+  width: 75px;
+  border: 4px solid #000;
+  border-radius: 10px;
+  background-color: forestgreen;
+  color: #fff;
+}
+
+.add-new-category-form {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 20px;
+  margin: 100px 0 0 600px;
+  width: 250px;
+  height: 150px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: rgb(165, 22, 58);
 }
 
-.App-link {
-  color: #61dafb;
+.add-new-category-form form {
+  margin-left: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-new-category-form input {
+  display: inline-block;
+  width: 200px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+}
+
+.add-new-category-form button {
+  display: inline-block;
+  padding: 5px;
+  width: 214px;
+  background-color: forestgreen;
+  color: #fff;
 }

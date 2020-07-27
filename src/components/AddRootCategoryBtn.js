@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
-import DialogsContext from '../context/dialogsContext';
+import DialogsContext from "../context/dialogsContext";
 
 const AddRootCategoryBtn = () => {
   const { dialogsOpen, changeDialogsOpen } = useContext(DialogsContext);
@@ -9,12 +9,14 @@ const AddRootCategoryBtn = () => {
   return (
     <button
       className="add-root-category-btn"
-      onClick={() => { changeDialogsOpen({
-        ...dialogsOpen,
-        rootCategoryAddDialogOpen: !dialogsOpen.rootCategoryAddDialogOpen,
-      }) }}
+      onClick={() => {
+        changeDialogsOpen({
+          ...dialogsOpen,
+          rootCategoryAddDialogOpen: !dialogsOpen.rootCategoryAddDialogOpen,
+        });
+      }}
     >
-      AddRootCategoryBtn
+      +
     </button>
   );
 };

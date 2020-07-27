@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-import AddRootCategoryBtn from './components/AddRootCategoryBtn';
-import AuthenticatedContainer from './containers/AuthenticatedContainer';
-import NodesDisplayContainer from './containers/NodesDisplayContainer';
-import AddRootCategoryFormContainer from './containers/AddRootCategoryFormContainer';
-import AddAttachmentNodeFormContainer from './containers/AddAttachmentNodeFormContainer';
-import AddCategoryNodeFormContainer from './containers/AddCategoryNodeFormContainer';
-import AddUrlLinkNodeFormContainer from './containers/AddUrlLinkNodeFormContainer';
+import AddRootCategoryBtn from "./components/AddRootCategoryBtn";
+import AuthenticatedContainer from "./containers/AuthenticatedContainer";
+import NodesDisplayContainer from "./containers/NodesDisplayContainer";
+import AddRootCategoryFormContainer from "./containers/AddRootCategoryFormContainer";
+import AddAttachmentNodeFormContainer from "./containers/AddAttachmentNodeFormContainer";
+import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContainer";
+import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
 
-import NewNodeFormSwitch from './components/NewNodeFormSwitch';
+import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
 
-import DialogsContext from './context/dialogsContext';
+import DialogsContext from "./context/dialogsContext";
 
 import "./App.css";
 
@@ -23,7 +23,7 @@ const App = () => {
   const openNewNodeDialog = () => {
     changeDialogsOpen({
       ...dialogsOpen,
-      subNodeAddDialogOpen: true,
+      subNodeAddDialogOpen: false,
     });
   };
 
@@ -32,22 +32,20 @@ const App = () => {
       <DialogsContext.Provider
         value={{
           dialogsOpen,
-          changeDialogsOpen
+          changeDialogsOpen,
         }}
       >
         <AddRootCategoryBtn />
 
         <NodesDisplayContainer openNewNodeDialog={openNewNodeDialog} />
 
-        {dialogsOpen.rootCategoryAddDialogOpen && <AddRootCategoryFormContainer />}
+        {dialogsOpen.rootCategoryAddDialogOpen && (
+          <AddRootCategoryFormContainer />
+        )}
 
         {dialogsOpen.subNodeAddDialogOpen && (
           <NewNodeFormSwitch
-            categories={[
-              'Category',
-              'URL link',
-              'Attachment'
-            ]}
+            categories={["Category", "URL link", "Attachment"]}
           >
             <AddCategoryNodeFormContainer />
             <AddUrlLinkNodeFormContainer />
@@ -57,6 +55,6 @@ const App = () => {
       </DialogsContext.Provider>
     </AuthenticatedContainer>
   );
-}
+};
 
 export default App;
