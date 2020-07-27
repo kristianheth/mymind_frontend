@@ -5,7 +5,7 @@ const AddNewCategoryForm = () => {
   return <div className="add-new-category-form">AddNewCategoryForm</div>;
 };
 
-AddNewCategoryForm.PropTypes = {
+AddNewCategoryForm.propTypes = {
   newCategoryTitle: PropTypes.string,
 };
 
