@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   return (
     <div className="login-form">
       <input
