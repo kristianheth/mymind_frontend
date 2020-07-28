@@ -13,12 +13,38 @@ import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
 import DialogsContext from "./context/dialogsContext";
 
 import "./App.css";
+import "./index.sass";
 
 const App = () => {
   const [dialogsOpen, changeDialogsOpen] = useState({
     rootCategoryAddDialogOpen: false,
     subNodeAddDialogOpen: false,
   });
+
+  const [nodes, changeNodes] = useState([
+    {
+      type: "category",
+      title: "Webdesign",
+      expanded: true,
+      children: [
+        {
+          type: "category",
+          title: "CSS",
+          expanded: false,
+          children: [],
+        },
+      ],
+    },
+    {
+      type: "category",
+      title: "Photography",
+    },
+  ]);
+
+  // eg used here: AddRootCategoryFormContainer
+  const addNewNode = (node) => {
+    changeNodes([...nodes, node]);
+  };
 
   const openNewNodeDialog = () => {
     changeDialogsOpen({
@@ -36,11 +62,15 @@ const App = () => {
         }}
       >
         <AddRootCategoryBtn />
+        <div>{nodes.length}</div>
 
-        <NodesDisplayContainer openNewNodeDialog={openNewNodeDialog} />
+        <NodesDisplayContainer
+          openNewNodeDialog={openNewNodeDialog}
+          nodes={nodes}
+        />
 
         {dialogsOpen.rootCategoryAddDialogOpen && (
-          <AddRootCategoryFormContainer />
+          <AddRootCategoryFormContainer addNewNode={addNewNode} />
         )}
 
         {dialogsOpen.subNodeAddDialogOpen && (

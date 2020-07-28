@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Node = () => {
-  return <div className="node">Node</div>;
+const Node = (props) => {
+  return <div className="node">{props.title}</div>;
 };
 
 Node.propTypes = {
