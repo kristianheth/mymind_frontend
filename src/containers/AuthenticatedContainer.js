@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import LoginFormContainer from './LoginFormContainer';
+import React, { useState } from "react";
+import LoginFormContainer from "./LoginFormContainer";
 
 const AuthenticatedContainer = ({ children }) => {
-    const token = true; // undefined;
+  const token = false; // undefined;
 
-    const [ user, updateUser ] = useState({ token });
+  const [user, updateUser] = useState({ token });
 
-    return (
-        <div className="authenticated-container">
-            {/* <UserContext.Provider value={{ user: {}, logOff }}> */}
+  const startAuthentication = (email, password) => {};
 
-            {!user.token && <LoginFormContainer />}
+  return (
+    <div className="authenticated-container">
+      {/* <UserContext.Provider value={{ user: {}, logOff }}> */}
 
-            {user.token && children}
+      {!user.token && (
+        <LoginFormContainer startAuthentication={startAuthentication} />
+      )}
 
-            {/* </UserContext.Provider> */}
-        </div>
-    );
+      {user.token && children}
+
+      {/* </UserContext.Provider> */}
+    </div>
+  );
 };
 
 export default AuthenticatedContainer;

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// stupid component renders UI
+
 const LoginForm = (props) => {
   return (
     <div className="login-form">
@@ -16,7 +18,7 @@ const LoginForm = (props) => {
         value={props.password}
         onChange={props.onPasswordChangeHandler}
         id="password"
-        placeholder="your email"
+        placeholder="your password"
       />
       <button onClick={props.onLoginSubmitHandler}>Log in</button>
     </div>

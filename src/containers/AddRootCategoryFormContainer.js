@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import AddNewCategoryForm from "../components/AddNewCategoryForm";
 
 const AddRootCategoryFormContainer = (props) => {
