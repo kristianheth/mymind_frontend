@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import AddRootCategoryBtn from "./components/AddRootCategoryBtn";
 import AuthenticatedContainer from "./containers/AuthenticatedContainer";
@@ -41,6 +42,18 @@ const App = () => {
     },
   ]);
 
+  useEffect(() => {
+    axios
+      .get("https://mymind-backend.herokuapp.com/nodes?parent_null=true")
+      .then((response) => {
+        console.log(response);
+        changeNodes(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   // eg used here: AddRootCategoryFormContainer
   const addNewNode = (node) => {
     changeNodes([...nodes, node]);
@@ -62,7 +75,7 @@ const App = () => {
         }}
       >
         <AddRootCategoryBtn />
-        <div>{nodes.length}</div>
+        {/* <div>{nodes.length}</div> */}
 
         <NodesDisplayContainer
           openNewNodeDialog={openNewNodeDialog}

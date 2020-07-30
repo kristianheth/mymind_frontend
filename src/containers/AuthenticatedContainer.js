@@ -3,9 +3,8 @@ import LoginFormContainer from "./LoginFormContainer";
 import axios from "axios";
 
 const AuthenticatedContainer = ({ children }) => {
-  let token; // undefined;
-  let initialUser; // undefined;
-
+  let token;
+  let initialUser;
   const storedToken = localStorage.getItem("token");
 
   if (storedToken) {
@@ -28,8 +27,6 @@ const AuthenticatedContainer = ({ children }) => {
         password: password,
       })
       .then((response) => {
-        // Handle success.
-
         // Save localStorage
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.jwt);
@@ -40,7 +37,6 @@ const AuthenticatedContainer = ({ children }) => {
         console.log("User token", response.data.jwt);
       })
       .catch((error) => {
-        // Handle error.
         console.log("An error occurred:", error.response);
       });
   };

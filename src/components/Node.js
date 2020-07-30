@@ -2,12 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Node = (props) => {
-  return <div className="node">{props.title}</div>;
+  return (
+    <div onClick={props.onTapToSelect} className="node">
+      {props.CategoryName}
+      {/* {props.selected ? "Show buttons" : ""} */}
+      <div>
+        {props.selected ? (
+          <div className="node-selected">
+            <button onClick={props.openNewNodeDialog}>Edit</button>
+            <button onClick={props.openNewNodeDialog}>Delete</button>
+            <button onClick={props.openNewNodeDialog}>Add subnode</button>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    </div>
+  );
 };
 
 Node.propTypes = {
-  type: PropTypes.string,
-  title: PropTypes.string,
+  Type: PropTypes.string,
+  CategoryName: PropTypes.string,
   expanded: PropTypes.bool,
   selected: PropTypes.bool,
   children: PropTypes.array,

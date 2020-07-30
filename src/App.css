@@ -19,6 +19,7 @@
   border-radius: 10px;
   background-color: rgba(34, 139, 34, 1);
   color: #fff;
+  cursor: pointer;
 }
 
 .add-new-category-form,
@@ -56,4 +57,49 @@
   width: 214px;
   background-color: rgba(34, 139, 34, 0.5);
   color: #fff;
+  cursor: pointer;
+}
+
+.node-container {
+  position: relative;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 1.5rem; */
+  color: #000;
+  font-weight: 700;
+  padding: 10px;
+  margin: 100px 0 0 600px;
+  width: 140px;
+  height: 40px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 30%;
+  background-color: rgba(236, 214, 15, 0.822);
+  cursor: pointer;
+}
+
+/*.nodes-display {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; 
+} */
+
+.node-selected {
+  font-size: 0.7rem;
+  position: absolute;
+  top: 50px;
+  left: 610px;
+  display: flex;
+  display: inline-block;
+  justify-items: center;
+}
+
+.node-selected button {
+  background-color: rgb(236, 140, 15);
+  border-radius: 2px;
+  display: block;
+  width: 150px;
 }
