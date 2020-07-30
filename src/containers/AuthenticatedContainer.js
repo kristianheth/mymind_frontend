@@ -1,12 +1,49 @@
 import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
+import axios from "axios";
 
 const AuthenticatedContainer = ({ children }) => {
-  const token = false; // undefined;
+  let token; // undefined;
+  let initialUser; // undefined;
 
-  const [user, updateUser] = useState({ token });
+  const storedToken = localStorage.getItem("token");
 
-  const startAuthentication = (email, password) => {};
+  if (storedToken) {
+    token = storedToken;
+  }
+
+  const storedUser = localStorage.getItem("user");
+
+  if (storedUser) {
+    initialUser = JSON.parse(storedUser);
+  }
+
+  const [user, updateUser] = useState({ token, user: initialUser });
+
+  const startAuthentication = (email, password) => {
+    // Request API.
+    axios
+      .post("https://mymind-backend.herokuapp.com/auth/local", {
+        identifier: email,
+        password: password,
+      })
+      .then((response) => {
+        // Handle success.
+
+        // Save localStorage
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", response.data.jwt);
+
+        updateUser({ token: response.data.jwt, user: response.data.user });
+        console.log("Well done!");
+        console.log("User profile", response.data.user);
+        console.log("User token", response.data.jwt);
+      })
+      .catch((error) => {
+        // Handle error.
+        console.log("An error occurred:", error.response);
+      });
+  };
 
   return (
     <div className="authenticated-container">
