@@ -7,7 +7,7 @@ const NodesDisplayContainer = (props) => {
   // const [nodes, updateNodes] = useState([]);
 
   return (
-    <div className="nodes-display">
+    <div className="nodes-display-container">
       <NodesDisplay nodes={props.nodes} />
       <button onClick={props.openNewNodeDialog}>+</button>
     </div>

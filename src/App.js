@@ -10,6 +10,7 @@ import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContai
 import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
 
 import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
+import ModalWindow from "./components/ModalWindow";
 
 import DialogsContext from "./context/dialogsContext";
 
@@ -19,7 +20,7 @@ import "./index.sass";
 const App = () => {
   const [dialogsOpen, changeDialogsOpen] = useState({
     rootCategoryAddDialogOpen: false,
-    subNodeAddDialogOpen: false,
+    subNodeAddDialogOpen: true,
   });
 
   const [nodes, changeNodes] = useState([
@@ -83,17 +84,21 @@ const App = () => {
         />
 
         {dialogsOpen.rootCategoryAddDialogOpen && (
-          <AddRootCategoryFormContainer addNewNode={addNewNode} />
+          <ModalWindow>
+            <AddRootCategoryFormContainer addNewNode={addNewNode} />
+          </ModalWindow>
         )}
 
         {dialogsOpen.subNodeAddDialogOpen && (
-          <NewNodeFormSwitch
-            categories={["Category", "URL link", "Attachment"]}
-          >
-            <AddCategoryNodeFormContainer />
-            <AddUrlLinkNodeFormContainer />
-            <AddAttachmentNodeFormContainer />
-          </NewNodeFormSwitch>
+          <ModalWindow>
+            <NewNodeFormSwitch
+              categories={["Category", "URL link", "Attachment"]}
+            >
+              <AddCategoryNodeFormContainer />
+              <AddUrlLinkNodeFormContainer />
+              <AddAttachmentNodeFormContainer />
+            </NewNodeFormSwitch>
+          </ModalWindow>
         )}
       </DialogsContext.Provider>
     </AuthenticatedContainer>

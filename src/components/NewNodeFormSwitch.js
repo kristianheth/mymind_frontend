@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./NewNodeFormSwitch.css";
 
-const NewNodeFormSwitch = ({categories, children }) => {
-  const [ selected ] = useState(0);
+const NewNodeFormSwitch = ({ categories, children }) => {
+  const [selected, changeSelected] = useState(0);
+
+  const onRadioClickHandler = (event) => {
+    changeSelected(parseInt(event.target.value));
+  };
 
   return (
     <div className="new-node-form-switch">
       <div>
-        NewNodeFormSwitch
+        <label>Add new node</label>
+        {categories.map((category, index) => {
+          return (
+            <label key={category}>
+              <input
+                value={index}
+                onClick={onRadioClickHandler}
+                name="type"
+                type="radio"
+                checked={selected === index}
+              />
+              {category}
+            </label>
+          );
+        })}
       </div>
 
       {children[selected]}
