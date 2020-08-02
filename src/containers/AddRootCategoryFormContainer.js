@@ -11,6 +11,7 @@ const AddRootCategoryFormContainer = (props) => {
   const onAddButtonClick = () => {
     // Calling function from App.js (take all existing nodes and add a new one)
     props.addNewNode({ type: "category", title: newCategoryTitle });
+    props.closeInputWindow();
   };
 
   return (

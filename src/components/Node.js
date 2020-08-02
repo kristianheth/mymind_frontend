@@ -5,13 +5,13 @@ const Node = (props) => {
   return (
     <div onClick={props.onTapToSelect} className="node">
       {props.CategoryName}
-      {/* {props.selected ? "Show buttons" : ""} */}
+
       <div>
         {props.selected ? (
           <div className="node-selected">
-            <button onClick={props.openNewNodeDialog}>Edit</button>
-            <button onClick={props.openNewNodeDialog}>Delete</button>
-            <button onClick={props.openNewNodeDialog}>Add subnode</button>
+            <button onClick={props.onEditTap}>Edit</button>
+            <button onClick={props.onDeleteTap}>Delete</button>
+            <button onClick={props.onAddSubnode}>Add subnode</button>
           </div>
         ) : (
           ""

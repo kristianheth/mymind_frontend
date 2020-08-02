@@ -3,19 +3,11 @@ import PropTypes from "prop-types";
 
 import DialogsContext from "../context/dialogsContext";
 
-const AddRootCategoryBtn = () => {
-  const { dialogsOpen, changeDialogsOpen } = useContext(DialogsContext);
+const AddRootCategoryBtn = (props) => {
+  // const { dialogsOpen, changeDialogsOpen } = useContext(DialogsContext);
 
   return (
-    <button
-      className="add-root-category-btn"
-      onClick={() => {
-        changeDialogsOpen({
-          ...dialogsOpen,
-          rootCategoryAddDialogOpen: !dialogsOpen.rootCategoryAddDialogOpen,
-        });
-      }}
-    >
+    <button className="add-root-category-btn" onClick={props.onClick}>
       +
     </button>
   );

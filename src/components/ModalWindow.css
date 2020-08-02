@@ -1,6 +1,7 @@
 .modal-window {
   display: flex;
   align-items: center;
+  justify-items: center;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -10,9 +11,28 @@
   padding: 20px;
   /* margin: 100px 0 0 600px; */
   transform: translate(-50%, -50%);
-  width: 250px;
-  height: 150px;
+  /* width: 250px;
+  height: 150px; */
   border: 2px solid #fff;
   border-radius: 10px;
   background-color: rgba(165, 22, 58, 1);
+}
+
+.modal-window input {
+  cursor: pointer;
+  display: inline-block;
+  width: 200px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+}
+
+.modal-window button {
+  cursor: pointer;
+  display: inline-block;
+  width: 214px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+  font-weight: 700;
+  background-color: rgba(34, 139, 34, 0.5);
+  color: #fff;
 }

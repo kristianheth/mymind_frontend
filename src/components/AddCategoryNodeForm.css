@@ -1,0 +1,7 @@
+.add-category-node-form {
+  display: inline-block;
+  cursor: pointer;
+  width: 150px;
+  /* margin: 10px 0 10px 0; */
+  padding: 5px;
+}

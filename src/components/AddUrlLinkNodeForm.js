@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AddUrlLinkNodeForm = () => {
+const AddUrlLinkNodeForm = (props) => {
   return <div className="add-url-link-node-form">AddUrlLinkNodeForm</div>;
 };
 

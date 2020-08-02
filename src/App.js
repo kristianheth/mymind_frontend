@@ -20,27 +20,32 @@ import "./index.sass";
 const App = () => {
   const [dialogsOpen, changeDialogsOpen] = useState({
     rootCategoryAddDialogOpen: false,
-    subNodeAddDialogOpen: true,
+    subNodeAddDialogOpen: false,
   });
 
+  const [rootCategoryAddDialogOpen, changeRootCategoryAddDialogOpen] = useState(
+    false
+  );
+  const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(false);
+
   const [nodes, changeNodes] = useState([
-    {
-      type: "category",
-      title: "Webdesign",
-      expanded: true,
-      children: [
-        {
-          type: "category",
-          title: "CSS",
-          expanded: false,
-          children: [],
-        },
-      ],
-    },
-    {
-      type: "category",
-      title: "Photography",
-    },
+    // {
+    //   type: "category",
+    //   title: "Webdesign",
+    //   expanded: true,
+    //   children: [
+    //     {
+    //       type: "category",
+    //       title: "CSS",
+    //       expanded: false,
+    //       children: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: "category",
+    //   title: "Photography",
+    // },
   ]);
 
   useEffect(() => {
@@ -67,6 +72,25 @@ const App = () => {
     });
   };
 
+  // ?????
+  const closeInputWindow = () => {
+    changeRootCategoryAddDialogOpen(false);
+  };
+
+  const closeSubNodeAddDialog = () => {
+    changeSubNodeAddDialogOpen(false);
+  };
+
+  const openRootCategoryWindow = () => {
+    changeRootCategoryAddDialogOpen(true);
+    changeSubNodeAddDialogOpen(false);
+  };
+
+  const openNewNodeWindow = () => {
+    changeRootCategoryAddDialogOpen(false);
+    changeSubNodeAddDialogOpen(true);
+  };
+
   return (
     <AuthenticatedContainer>
       <DialogsContext.Provider
@@ -75,28 +99,42 @@ const App = () => {
           changeDialogsOpen,
         }}
       >
-        <AddRootCategoryBtn />
+        <AddRootCategoryBtn onClick={openRootCategoryWindow} />
         {/* <div>{nodes.length}</div> */}
 
         <NodesDisplayContainer
-          openNewNodeDialog={openNewNodeDialog}
+          openNewNodeDialog={openNewNodeWindow}
           nodes={nodes}
         />
 
-        {dialogsOpen.rootCategoryAddDialogOpen && (
+        {rootCategoryAddDialogOpen && (
           <ModalWindow>
-            <AddRootCategoryFormContainer addNewNode={addNewNode} />
+            <AddRootCategoryFormContainer
+              addNewNode={addNewNode}
+              closeInputWindow={closeInputWindow}
+            />
           </ModalWindow>
         )}
 
-        {dialogsOpen.subNodeAddDialogOpen && (
+        {subNodeAddDialogOpen && (
           <ModalWindow>
             <NewNodeFormSwitch
               categories={["Category", "URL link", "Attachment"]}
             >
-              <AddCategoryNodeFormContainer />
-              <AddUrlLinkNodeFormContainer />
-              <AddAttachmentNodeFormContainer />
+              <AddCategoryNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
+
+              <AddUrlLinkNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
+
+              <AddAttachmentNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
             </NewNodeFormSwitch>
           </ModalWindow>
         )}
