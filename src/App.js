@@ -119,7 +119,7 @@ const App = () => {
         {subNodeAddDialogOpen && (
           <ModalWindow>
             <NewNodeFormSwitch
-              categories={["Category", "URL link", "Attachment"]}
+              categories={["Sub Category", "URL link", "Attachment"]}
             >
               <AddCategoryNodeFormContainer
                 addNewNode={addNewNode}
