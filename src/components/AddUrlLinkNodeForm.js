@@ -10,6 +10,7 @@ const AddUrlLinkNodeForm = (props) => {
         {/* <label>Type category</label> */}
 
         <input
+          className="add-url-link-node-form__text-input"
           type="text"
           value={props.newNodeLinkTitle}
           onChange={props.newNodeLinkTitleChangeHandler}
@@ -17,6 +18,7 @@ const AddUrlLinkNodeForm = (props) => {
           placeholder="link name"
         />
         <input
+          className="add-url-link-node-form__text-input"
           type="text"
           value={props.newNodeLinkUrl}
           onChange={props.newNodeLinkUrlChangeHandler}

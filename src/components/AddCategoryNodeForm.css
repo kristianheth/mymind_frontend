@@ -7,6 +7,8 @@
 
 .add-category-node-form__text-input {
   margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
 }
 
 .add-category-node-form__button {

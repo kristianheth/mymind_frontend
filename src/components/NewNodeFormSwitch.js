@@ -11,8 +11,8 @@ const NewNodeFormSwitch = ({ categories, children }) => {
 
   return (
     <div className="new-node-form-switch">
-      <div id="new-node-header">Add new node</div>
-      <div className="new-node-header">
+      <div className="new-node-form-switch__header">Add new node</div>
+      <div className="new-node-form-switch__radio-input">
         {categories.map((category, index) => {
           return (
             <label key={category}>

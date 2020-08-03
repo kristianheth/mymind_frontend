@@ -5,7 +5,7 @@ import "./AddAttachmentNodeForm.css";
 
 const AddAttachmentNodeForm = (props) => {
   return (
-    <div className="add-attachment-node-form">
+    <div className="add-attachment-node-form__button">
       <button onClick={props.onUploadTap}>Attach file</button>
     </div>
   );

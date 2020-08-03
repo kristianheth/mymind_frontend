@@ -1,7 +1,4 @@
 .modal-window {
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-items: center; */
   position: fixed;
   left: 50%;
   top: 50%;
@@ -9,7 +6,6 @@
   font-size: 1.2rem;
   color: #fff;
   padding: 20px;
-  /* margin: 100px 0 0 600px; */
   transform: translate(-50%, -50%);
   width: 370px;
   height: 370px;
@@ -18,24 +14,6 @@
   background-color: rgba(255, 0, 64, 0.986);
 }
 
-/* .modal-window input[type="radio"] {
-  width: initial;
-}
-
-.modal-window label {
-  display: block;
-  cursor: pointer;
-  padding: 0;
-}
-
-.modal-window input[type="text"] {
-  cursor: pointer;
-  display: inline-block;
-  width: 100%;
-  width: 100%;
-  padding: 5px;
-} */
-
 .modal-window button {
   cursor: pointer;
   display: block;
@@ -43,4 +21,5 @@
   font-weight: 700;
   background-color: rgba(34, 139, 34, 1);
   color: #fff;
+  width: 100%;
 }

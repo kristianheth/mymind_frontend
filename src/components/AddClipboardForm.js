@@ -5,7 +5,7 @@ import "./AddClipboardForm.css";
 
 const AddClipboardForm = (props) => {
   return (
-    <div className="add-clipboard-form">
+    <div className="add-clipboard-form__button">
       <button>Paste from clipboard</button>
     </div>
   );
