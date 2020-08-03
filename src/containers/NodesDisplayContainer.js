@@ -12,7 +12,7 @@ const NodesDisplayContainer = (props) => {
         onAddSubnode={props.openNewNodeDialog}
       />
 
-      <button>+</button>
+      {/* <button>+</button> */}
     </div>
   );
 };

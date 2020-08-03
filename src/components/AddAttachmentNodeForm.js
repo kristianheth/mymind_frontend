@@ -1,18 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const AddAttachmentNodeForm = () => {
-    return (
-        <div className="add-attachment-node-form">
-            AddAttachmentNodeForm
-        </div>
-    );
+import "./AddAttachmentNodeForm.css";
+
+const AddAttachmentNodeForm = (props) => {
+  return (
+    <div className="add-attachment-node-form">
+      <button onClick={props.onUploadTap}>Attach file</button>
+    </div>
+  );
 };
 
 AddAttachmentNodeForm.propTypes = {
-    newNodeFile: PropTypes.string,
-    onAttachFileTap: PropTypes.func,
-    onUploadTap: PropTypes.func,
+  newNodeFile: PropTypes.string,
+  onAttachFileTap: PropTypes.func,
+  onUploadTap: PropTypes.func,
 };
 
 export default AddAttachmentNodeForm;

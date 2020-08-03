@@ -1,4 +1,23 @@
-.new-node-form-switch label {
+.new-node-form-switch {
+  position: relative;
+}
+
+#new-node-header {
+  color: rgba(34, 139, 34, 1);
+  /* position: absolute;*/
+  font-weight: 700;
+  font-size: 1.9rem;
+}
+
+.new-node-header {
+  position: absolute;
+  top: 30px;
+  margin-top: 10px;
+}
+
+.new-node-header input {
+  /* position: absolute; */
+  /* top: 50px; */
   display: block;
   cursor: pointer;
 }

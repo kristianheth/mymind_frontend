@@ -1,8 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./AddUrlLinkNodeForm.css";
+
 const AddUrlLinkNodeForm = (props) => {
-  return <div className="add-url-link-node-form">AddUrlLinkNodeForm</div>;
+  return (
+    <div className="add-url-link-node-form">
+      <div>
+        {/* <label>Type category</label> */}
+
+        <input
+          type="text"
+          value={props.newNodeLinkTitle}
+          onChange={props.newNodeLinkTitleChangeHandler}
+          id="link-name"
+          placeholder="link name"
+        />
+        <input
+          type="text"
+          value={props.newNodeLinkUrl}
+          onChange={props.newNodeLinkUrlChangeHandler}
+          id="url"
+          placeholder="url"
+        />
+        <button onClick={props.onAddTap}>Add</button>
+      </div>
+    </div>
+  );
 };
 
 AddUrlLinkNodeForm.propTypes = {

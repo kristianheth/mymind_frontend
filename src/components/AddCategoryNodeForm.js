@@ -7,7 +7,7 @@ const AddCategoryNodeForm = (props) => {
   return (
     <div className="add-category-node-form">
       <div>
-        <label>Type category</label>
+        {/* <label>Type category</label> */}
 
         <input
           type="text"

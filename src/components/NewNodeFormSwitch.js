@@ -11,8 +11,8 @@ const NewNodeFormSwitch = ({ categories, children }) => {
 
   return (
     <div className="new-node-form-switch">
-      <div>
-        <label>Add new node</label>
+      <div id="new-node-header">Add new node</div>
+      <div className="new-node-header">
         {categories.map((category, index) => {
           return (
             <label key={category}>
@@ -27,9 +27,9 @@ const NewNodeFormSwitch = ({ categories, children }) => {
             </label>
           );
         })}
-      </div>
 
-      {children[selected]}
+        {children[selected]}
+      </div>
     </div>
   );
 };

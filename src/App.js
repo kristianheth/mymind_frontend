@@ -8,6 +8,7 @@ import AddRootCategoryFormContainer from "./containers/AddRootCategoryFormContai
 import AddAttachmentNodeFormContainer from "./containers/AddAttachmentNodeFormContainer";
 import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContainer";
 import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
+import AddClipboardFormContainer from "./containers/AddClipboardFormContainer";
 
 import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
 import ModalWindow from "./components/ModalWindow";
@@ -119,7 +120,12 @@ const App = () => {
         {subNodeAddDialogOpen && (
           <ModalWindow>
             <NewNodeFormSwitch
-              categories={["Sub Category", "URL link", "Attachment"]}
+              categories={[
+                "Sub Category",
+                "URL link",
+                "Paste clipboard",
+                "Attachment",
+              ]}
             >
               <AddCategoryNodeFormContainer
                 addNewNode={addNewNode}
@@ -127,6 +133,11 @@ const App = () => {
               />
 
               <AddUrlLinkNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
+
+              <AddClipboardFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
               />
