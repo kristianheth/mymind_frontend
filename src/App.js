@@ -27,7 +27,7 @@ const App = () => {
   const [rootCategoryAddDialogOpen, changeRootCategoryAddDialogOpen] = useState(
     false
   );
-  const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(false);
+  const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(true);
 
   const [nodes, changeNodes] = useState([
     // {
@@ -109,16 +109,15 @@ const App = () => {
         />
 
         {rootCategoryAddDialogOpen && (
-          <ModalWindow>
+          <ModalWindow onCloseClick={closeInputWindow}>
             <AddRootCategoryFormContainer
               addNewNode={addNewNode}
-              closeInputWindow={closeInputWindow}
             />
           </ModalWindow>
         )}
 
         {subNodeAddDialogOpen && (
-          <ModalWindow>
+          <ModalWindow onCloseClick={closeSubNodeAddDialog} >
             <NewNodeFormSwitch
               categories={[
                 "Sub Category",

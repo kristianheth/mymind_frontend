@@ -6,18 +6,21 @@ import "./AddCategoryNodeForm.css";
 const AddCategoryNodeForm = (props) => {
   return (
     <div className="add-category-node-form">
-      <div>
-        {/* <label>Type category</label> */}
+      <input
+        className="add-category-node-form__text-input"
+        type="text"
+        value={props.newNodeCategoryTitle}
+        onChange={props.newNodeCategoryTitleChangeHandler}
+        id="category"
+        placeholder="type category"
+      />
 
-        <input
-          type="text"
-          value={props.newNodeCategoryTitle}
-          onChange={props.newNodeCategoryTitleChangeHandler}
-          id="category"
-          placeholder="type category"
-        />
-        <button onClick={props.onAddTap}>Add</button>
-      </div>
+      <button
+        className="add-category-node-form__button"
+        onClick={props.onAddTap}
+      >
+        Add
+        </button>
     </div>
   );
 };
