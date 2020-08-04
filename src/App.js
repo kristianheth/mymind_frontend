@@ -75,61 +75,63 @@ const App = () => {
   };
 
   return (
-    <AuthenticatedContainer>
-      <DialogsContext.Provider
-        value={{
-          dialogsOpen,
-          changeDialogsOpen,
-        }}
-      >
-        <AddRootCategoryBtn onClick={openRootCategoryWindow} />
-        {/* <div>{nodes.length}</div> */}
+    <div className="authenticated-container">
+      <AuthenticatedContainer>
+        <DialogsContext.Provider
+          value={{
+            dialogsOpen,
+            changeDialogsOpen,
+          }}
+        >
+          <AddRootCategoryBtn onClick={openRootCategoryWindow} />
+          {/* <div>{nodes.length}</div> */}
 
-        <NodesDisplayContainer
-          openNewNodeDialog={openNewNodeWindow}
-          nodes={nodes}
-        />
+          <NodesDisplayContainer
+            openNewNodeDialog={openNewNodeWindow}
+            nodes={nodes}
+          />
 
-        {rootCategoryAddDialogOpen && (
-          <ModalWindow onCloseClick={closeInputWindow}>
-            <AddRootCategoryFormContainer addNewNode={addNewNode} />
-          </ModalWindow>
-        )}
+          {rootCategoryAddDialogOpen && (
+            <ModalWindow onCloseClick={closeInputWindow}>
+              <AddRootCategoryFormContainer addNewNode={addNewNode} />
+            </ModalWindow>
+          )}
 
-        {subNodeAddDialogOpen && (
-          <ModalWindow onCloseClick={closeSubNodeAddDialog}>
-            <NewNodeFormSwitch
-              categories={[
-                "Sub Category",
-                "URL link",
-                "Paste clipboard",
-                "Attachment",
-              ]}
-            >
-              <AddCategoryNodeFormContainer
-                addNewNode={addNewNode}
-                closeSubNodeAddDialog={closeSubNodeAddDialog}
-              />
+          {subNodeAddDialogOpen && (
+            <ModalWindow onCloseClick={closeSubNodeAddDialog}>
+              <NewNodeFormSwitch
+                categories={[
+                  "Sub Category",
+                  "URL link",
+                  "Paste clipboard",
+                  "Attachment",
+                ]}
+              >
+                <AddCategoryNodeFormContainer
+                  addNewNode={addNewNode}
+                  closeSubNodeAddDialog={closeSubNodeAddDialog}
+                />
 
-              <AddUrlLinkNodeFormContainer
-                addNewNode={addNewNode}
-                closeSubNodeAddDialog={closeSubNodeAddDialog}
-              />
+                <AddUrlLinkNodeFormContainer
+                  addNewNode={addNewNode}
+                  closeSubNodeAddDialog={closeSubNodeAddDialog}
+                />
 
-              <AddClipboardFormContainer
-                addNewNode={addNewNode}
-                closeSubNodeAddDialog={closeSubNodeAddDialog}
-              />
+                <AddClipboardFormContainer
+                  addNewNode={addNewNode}
+                  closeSubNodeAddDialog={closeSubNodeAddDialog}
+                />
 
-              <AddAttachmentNodeFormContainer
-                addNewNode={addNewNode}
-                closeSubNodeAddDialog={closeSubNodeAddDialog}
-              />
-            </NewNodeFormSwitch>
-          </ModalWindow>
-        )}
-      </DialogsContext.Provider>
-    </AuthenticatedContainer>
+                <AddAttachmentNodeFormContainer
+                  addNewNode={addNewNode}
+                  closeSubNodeAddDialog={closeSubNodeAddDialog}
+                />
+              </NewNodeFormSwitch>
+            </ModalWindow>
+          )}
+        </DialogsContext.Provider>
+      </AuthenticatedContainer>
+    </div>
   );
 };
 

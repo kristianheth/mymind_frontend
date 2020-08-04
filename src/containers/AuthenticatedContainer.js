@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
 import axios from "axios";
+import "./AuthenticatedContainer.css";
 
-import laser from "./laser.jpg";
+import laser from "./laserFullHD.jpg";
 
 const AuthenticatedContainer = ({ children }) => {
   let token;
@@ -47,8 +48,10 @@ const AuthenticatedContainer = ({ children }) => {
     <div
       style={{
         backgroundImage: `url(${laser})`,
-        backgroundRepeat: `no-repeat center center fixed`,
+        backgroundRepeat: `no-repeat`,
         backgroundSize: `cover`,
+        backgroundPosition: `50% 70%`,
+        // backgroundPositionY
       }}
       className="authenticated-container"
     >

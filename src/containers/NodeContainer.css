@@ -9,8 +9,8 @@
   color: rgb(206, 23, 99);
   font-weight: 700;
   font-size: 0.8rem;
-  border: solid 1px #000;
-  background-color: seashell;
+  border: solid 3px #000;
+  background-color: rgba(255, 245, 238, 0.9);
   border-radius: 50%;
   padding: 2px 9px;
   /* width: 15px; */
@@ -18,5 +18,5 @@
 }
 
 .node-container-counter:hover {
-  border: solid 2px rgb(207, 23, 85);
+  border: solid 3px rgb(207, 23, 85);
 }
