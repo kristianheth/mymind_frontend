@@ -48,8 +48,8 @@ const AuthenticatedContainer = ({ children }) => {
   return (
     <div
       style={{
-        // backgroundImage: `url(${laser})`,
-        backgroundImage: `url(${neural})`,
+        backgroundImage: `url(${laser})`,
+        // backgroundImage: `url(${neural})`,
         backgroundRepeat: `no-repeat`,
         backgroundSize: `cover`,
         backgroundPosition: `50% 70%`,
