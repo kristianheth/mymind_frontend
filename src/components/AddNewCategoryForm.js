@@ -1,18 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./AddNewCategoryForm.css";
+
 const AddNewCategoryForm = (props) => {
   return (
     <div className="add-new-category-form">
       <label>Add new category</label>
-      <input
-        type="text"
-        value={props.newCategoryTitle}
-        onChange={props.onNewCategoryTitleChange}
-        id="category"
-        placeholder="type category"
-      />
-      <button onClick={props.onAddButtonClick}>Add</button>
+      <div className="add-new-category-form__text-input">
+        <input
+          type="text"
+          value={props.newCategoryTitle}
+          onChange={props.onNewCategoryTitleChange}
+          id="category"
+          placeholder="type category"
+        />
+      </div>
+      <button
+        className="add-new-category-form__button"
+        onClick={props.onAddButtonClick}
+      >
+        Add
+      </button>
     </div>
   );
 };

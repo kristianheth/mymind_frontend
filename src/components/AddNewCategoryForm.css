@@ -1,0 +1,18 @@
+.add-new-category-form label {
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.add-new-category-form input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+}
+
+.add-new-category-form button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

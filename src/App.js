@@ -15,7 +15,6 @@ import ModalWindow from "./components/ModalWindow";
 
 import DialogsContext from "./context/dialogsContext";
 
-import "./App.css";
 import "./index.sass";
 
 const App = () => {
@@ -110,14 +109,12 @@ const App = () => {
 
         {rootCategoryAddDialogOpen && (
           <ModalWindow onCloseClick={closeInputWindow}>
-            <AddRootCategoryFormContainer
-              addNewNode={addNewNode}
-            />
+            <AddRootCategoryFormContainer addNewNode={addNewNode} />
           </ModalWindow>
         )}
 
         {subNodeAddDialogOpen && (
-          <ModalWindow onCloseClick={closeSubNodeAddDialog} >
+          <ModalWindow onCloseClick={closeSubNodeAddDialog}>
             <NewNodeFormSwitch
               categories={[
                 "Sub Category",

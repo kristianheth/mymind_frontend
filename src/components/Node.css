@@ -1,24 +1,38 @@
-.node-container {
-  position: relative;
-}
-
-.node-container-counter {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  color: rgb(206, 23, 99);
-  font-weight: 800;
-  border: solid 1px #000;
-  background-color: seashell;
-  border-radius: 50%;
-  padding: 5px 11px;
-  width: 10px;
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 1.5rem; */
+  color: #000;
+  font-weight: 700;
+  padding: 10px;
+  margin-bottom: 100px;
+  width: 120px;
+  height: 40px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 30%;
+  background-color: rgba(236, 214, 15, 0.822);
   cursor: pointer;
 }
 
-/* .node-container-counter:empty:after {
-  content: "Fill me";
-  padding: 4px;
-  width: 200px;
-  right: 40px;
-} */
+.node-selected {
+  /* font-size: 0.7rem; */
+  position: absolute;
+  top: 60px;
+  left: 14px;
+  display: flex;
+  display: inline-block;
+  justify-items: center;
+}
+
+.node-selected button {
+  background-color: rgb(236, 140, 15);
+  border-radius: 8px;
+  display: block;
+  width: 120px;
+  padding: 5px;
+  margin: 0;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}

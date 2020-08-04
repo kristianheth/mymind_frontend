@@ -1,0 +1,22 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.login-form input {
+  display: inline-block;
+  width: 200px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+}
+
+.login-form button {
+  display: inline-block;
+  padding: 5px;
+  width: 214px;
+  background-color: rgba(34, 139, 34, 0.5);
+  color: #fff;
+  cursor: pointer;
+}

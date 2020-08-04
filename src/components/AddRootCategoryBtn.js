@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
-import DialogsContext from "../context/dialogsContext";
+import "./AddRootCategoryBtn.css";
+
+// import DialogsContext from "../context/dialogsContext";
 
 const AddRootCategoryBtn = (props) => {
   // const { dialogsOpen, changeDialogsOpen } = useContext(DialogsContext);
