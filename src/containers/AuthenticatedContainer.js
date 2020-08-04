@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
 import axios from "axios";
 
+import laser from "./laser.jpg";
+
 const AuthenticatedContainer = ({ children }) => {
   let token;
   let initialUser;
@@ -42,7 +44,14 @@ const AuthenticatedContainer = ({ children }) => {
   };
 
   return (
-    <div className="authenticated-container">
+    <div
+      style={{
+        backgroundImage: `url(${laser})`,
+        backgroundRepeat: `no-repeat center center fixed`,
+        backgroundSize: `cover`,
+      }}
+      className="authenticated-container"
+    >
       {/* <UserContext.Provider value={{ user: {}, logOff }}> */}
 
       {!user.token && (

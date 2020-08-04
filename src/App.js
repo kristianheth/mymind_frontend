@@ -15,7 +15,8 @@ import ModalWindow from "./components/ModalWindow";
 
 import DialogsContext from "./context/dialogsContext";
 
-import "./index.sass";
+// import "./index.sass";
+import "./index.css";
 
 const App = () => {
   const [dialogsOpen, changeDialogsOpen] = useState({
@@ -26,27 +27,9 @@ const App = () => {
   const [rootCategoryAddDialogOpen, changeRootCategoryAddDialogOpen] = useState(
     false
   );
-  const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(true);
+  const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(false);
 
-  const [nodes, changeNodes] = useState([
-    // {
-    //   type: "category",
-    //   title: "Webdesign",
-    //   expanded: true,
-    //   children: [
-    //     {
-    //       type: "category",
-    //       title: "CSS",
-    //       expanded: false,
-    //       children: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   type: "category",
-    //   title: "Photography",
-    // },
-  ]);
+  const [nodes, changeNodes] = useState([]);
 
   useEffect(() => {
     axios
