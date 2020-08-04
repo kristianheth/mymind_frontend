@@ -23,6 +23,9 @@ const LoginForm = (props) => {
         placeholder="your password"
       />
       <button onClick={props.onLoginSubmitHandler}>Log in</button>
+      <div className="sign-in-form">
+        <button onClick={props.onRegisterSubmitHandler}>Sign in</button>
+      </div>
     </div>
   );
 };
