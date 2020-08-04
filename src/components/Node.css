@@ -4,6 +4,7 @@
   justify-content: center;
   /* font-size: 1.5rem; */
   color: rgb(66, 66, 66);
+  /* color: rgb(207, 23, 85); */
   font-weight: 900;
   padding: 10px;
   margin-bottom: 100px;
@@ -12,6 +13,9 @@
   border: 3px solid rgb(255, 255, 255);
   border-radius: 50%;
   background-color: rgba(236, 214, 15, 0.92);
+  /* background-image: url("./NeuralNetwork.jpg"); */
+  /* opacity: 0.8; */
+  background-size: cover;
   cursor: pointer;
 }
 

@@ -27,6 +27,9 @@ const App = () => {
   const [rootCategoryAddDialogOpen, changeRootCategoryAddDialogOpen] = useState(
     false
   );
+
+  const [userLoggedInStatus, changeUserLoggedInStatus] = useState(true);
+
   const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(false);
 
   const [nodes, changeNodes] = useState([]);
@@ -60,6 +63,10 @@ const App = () => {
     changeRootCategoryAddDialogOpen(false);
   };
 
+  const userLoggedIn = () => {
+    changeUserLoggedInStatus(false);
+  };
+
   const closeSubNodeAddDialog = () => {
     changeSubNodeAddDialogOpen(false);
   };
@@ -86,7 +93,7 @@ const App = () => {
           <AddRootCategoryBtn onClick={openRootCategoryWindow} />
           {/* <div>{nodes.length}</div> */}
 
-          <LogOutBtn />
+          <LogOutBtn userLoggedIn={userLoggedIn} />
 
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}

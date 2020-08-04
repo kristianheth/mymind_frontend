@@ -2,9 +2,12 @@ import React from "react";
 
 import "./LogOutBtn.css";
 
-const LogOutBtn = () => {
+const LogOutBtn = (props) => {
   const logoutFn = () => {
     localStorage.removeItem("token", "user");
+    {
+      props.userLoggedIn(false);
+    }
   };
 
   return (

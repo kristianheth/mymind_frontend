@@ -4,6 +4,7 @@ import axios from "axios";
 import "./AuthenticatedContainer.css";
 
 import laser from "./laserFullHD.jpg";
+import neural from "./NeuralNetwork.jpg";
 
 const AuthenticatedContainer = ({ children }) => {
   let token;
@@ -47,7 +48,8 @@ const AuthenticatedContainer = ({ children }) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${laser})`,
+        // backgroundImage: `url(${laser})`,
+        backgroundImage: `url(${neural})`,
         backgroundRepeat: `no-repeat`,
         backgroundSize: `cover`,
         backgroundPosition: `50% 70%`,
