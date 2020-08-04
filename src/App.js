@@ -9,13 +9,13 @@ import AddAttachmentNodeFormContainer from "./containers/AddAttachmentNodeFormCo
 import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContainer";
 import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
 import AddClipboardFormContainer from "./containers/AddClipboardFormContainer";
+import LogOutBtn from "./components/LogOutBtn";
 
 import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
 import ModalWindow from "./components/ModalWindow";
 
 import DialogsContext from "./context/dialogsContext";
 
-// import "./index.sass";
 import "./index.css";
 
 const App = () => {
@@ -85,6 +85,8 @@ const App = () => {
         >
           <AddRootCategoryBtn onClick={openRootCategoryWindow} />
           {/* <div>{nodes.length}</div> */}
+
+          <LogOutBtn />
 
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}
