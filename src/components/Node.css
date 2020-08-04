@@ -23,8 +23,8 @@
 .node-selected {
   /* font-size: 0.7rem; */
   position: absolute;
-  top: 40px;
-  right: 8px;
+  top: 90px;
+  right: 14px;
   display: flex;
   display: inline-block;
   justify-items: center;
@@ -32,12 +32,12 @@
 
 .node-selected button {
   background-color: rgb(252, 255, 64);
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid rgb(255, 255, 255);
   display: block;
   width: 100px;
   padding: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   font-weight: 700;
   color: rgb(66, 66, 66);
   cursor: pointer;
@@ -45,4 +45,6 @@
 
 .node-selected button:hover {
   border: 2px solid rgb(207, 23, 85);
+  background-color: rgba(172, 173, 74, 0.9);
+  color: rgba(255, 255, 255);
 }
