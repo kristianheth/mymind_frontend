@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import Node from "../components/Node";
 import NodeContainer from "../containers/NodeContainer";
 import UserContext from "../context/userContext";
 

@@ -117,6 +117,7 @@ const App = () => {
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}
             nodes={nodes}
+            fetchNodes={fetchNodes}
           />
         )}
 

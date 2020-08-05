@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
 import Node from "../components/Node";
+import UserContext from "../context/userContext";
 
 import "./NodeContainer.css";
 
-const NodeContainer = (props) => {
+const NodeContainer = ({ fetchNodes, ...props }) => {
   const [selected, changeSelected] = useState(false);
   const [expanded, changeExpanded] = useState(false);
   const { counter, ...restProps } = props;
+
+  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [errorMessage, updateErrorMessage] = useState();
+
+  const { user } = useContext(UserContext);
 
   const toggleSelected = () => {
     changeSelected(!selected);
@@ -17,11 +24,30 @@ const NodeContainer = (props) => {
     changeExpanded(!expanded);
   };
 
+  const deleteNode = (nodeId) => {
+    updateRequestStatus('STARTED');
+
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/nodes/${nodeId}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        },
+      })
+      .then(() => {
+        fetchNodes();
+        updateRequestStatus('SUCCESS');
+      })
+      .catch(() => {
+        updateRequestStatus('FAILED');
+      });
+  };
+
   return (
     <Node
       selected={selected}
       onTapToSelect={toggleSelected}
       onToggleExpandTap={toggleExpanded}
+      onDeleteTap={deleteNode}
       expanded={expanded}
       counter={counter}
       {...restProps}

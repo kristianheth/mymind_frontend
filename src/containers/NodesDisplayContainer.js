@@ -3,15 +3,18 @@ import React, { useState } from "react";
 import NodesDisplay from "../components/NodesDisplay";
 import "./NodesDisplayContainer.css";
 
-const NodesDisplayContainer = (props) => {
+const NodesDisplayContainer = ({
+  nodes,
+  openNewNodeDialog,
+  fetchNodes,
+}) => {
   return (
     <div className="nodes-display-container">
       <NodesDisplay
-        nodes={props.nodes}
-        onAddSubnode={props.openNewNodeDialog}
+        nodes={nodes}
+        onAddSubnode={openNewNodeDialog}
+        fetchNodes={fetchNodes}
       />
-
-      {/* <button>+</button> */}
     </div>
   );
 };

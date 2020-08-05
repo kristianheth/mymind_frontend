@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import NodeContainer from "../containers/NodeContainer";
 
-const NodesDisplay = ({ nodes = [], onAddSubnode}) => {
+const NodesDisplay = ({ nodes = [], onAddSubnode, fetchNodes }) => {
   return (
     nodes.map((node, key) => (
       <NodeContainer
@@ -12,6 +12,7 @@ const NodesDisplay = ({ nodes = [], onAddSubnode}) => {
         CategoryName={node.CategoryName}
         id={node.id}
         onAddSubnode={onAddSubnode}
+        fetchNodes={fetchNodes}
       />
     ))
   );
@@ -34,6 +35,7 @@ NodesDisplay.propTypes = {
   onAddSubnode: PropTypes.func,
 
   onToggleExpandTap: PropTypes.func,
+  fetchNodes: PropTypes.func,
 };
 
 export default NodesDisplay;
