@@ -18,7 +18,7 @@ import UserContext from "./context/userContext";
 import "./index.css";
 
 const App = () => {
-  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [requestStatus, updateRequestStatus] = useState("IDLE");
   const [errorMessage, updateErrorMessage] = useState();
   const [parentIdForSubNode, updateParentIdForSubNode] = useState();
 
@@ -38,28 +38,32 @@ const App = () => {
   const [nodes, changeNodes] = useState([]);
 
   const fetchNodes = () => {
-    updateRequestStatus('STARTED');
+    updateRequestStatus("STARTED");
 
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
         headers: {
-          Authorization: `Bearer ${user.token}`
+          Authorization: `Bearer ${user.token}`,
         },
       })
       .then((response) => {
         changeNodes(response.data);
-        updateRequestStatus('SUCCESS');
       })
+
       .catch((error) => {
         const { data } = error.response.data;
 
-        const errMessage = data.map(({ messages }) => {
-          const messagesAsLines = messages.map(({ message }) => message).join('\n');
-          return messagesAsLines;
-        }).join('');
+        const errMessage = data
+          .map(({ messages }) => {
+            const messagesAsLines = messages
+              .map(({ message }) => message)
+              .join("\n");
+            return messagesAsLines;
+          })
+          .join("");
 
         updateErrorMessage(errMessage);
-        updateRequestStatus('FAILED');
+        updateRequestStatus("FAILED");
       });
   };
 
@@ -107,13 +111,11 @@ const App = () => {
 
         <LogOutBtn />
 
-        {(requestStatus === 'STARTED' || requestStatus === 'IDLE') && (
-          <div className="loading">
-            Loading...
-          </div>
+        {(requestStatus === "STARTED" || requestStatus === "IDLE") && (
+          <div className="loading">Loading...</div>
         )}
 
-        {requestStatus === 'SUCCESS' && (
+        {requestStatus === "SUCCESS" && (
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}
             nodes={nodes}
@@ -121,10 +123,8 @@ const App = () => {
           />
         )}
 
-        {requestStatus === 'FAILED' && (
-          <div className="error_message">
-            {errorMessage}
-          </div>
+        {requestStatus === "FAILED" && (
+          <div className="error_message">{errorMessage}</div>
         )}
 
         {rootCategoryAddDialogOpen && (

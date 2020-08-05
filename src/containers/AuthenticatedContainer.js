@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
 
-import UserContext from '../context/userContext';
+import UserContext from "../context/userContext";
 
 import axios from "axios";
 import "./AuthenticatedContainer.css";
@@ -21,7 +21,7 @@ const AuthenticatedContainer = ({ children }) => {
 
   const [user, updateUser] = useState({ token, user: initialUser });
 
-  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [requestStatus, updateRequestStatus] = useState("IDLE");
   const [errorMessage, updateErrorMessage] = useState();
 
   const logOff = () => {
@@ -31,7 +31,7 @@ const AuthenticatedContainer = ({ children }) => {
   };
 
   const startAuthentication = (email, password) => {
-    updateRequestStatus('STARTED');
+    updateRequestStatus("STARTED");
 
     // Request API.
     axios
@@ -45,18 +45,22 @@ const AuthenticatedContainer = ({ children }) => {
         localStorage.setItem("token", response.data.jwt);
 
         updateUser({ token: response.data.jwt, user: response.data.user });
-        updateRequestStatus('SUCCESS');
+        updateRequestStatus("SUCCESS");
       })
       .catch((error) => {
         const { data } = error.response.data;
 
-        const errMessage = data.map(({ messages }) => {
-          const messagesAsLines = messages.map(({ message }) => message).join('\n');
-          return messagesAsLines;
-        }).join('');
+        const errMessage = data
+          .map(({ messages }) => {
+            const messagesAsLines = messages
+              .map(({ message }) => message)
+              .join("\n");
+            return messagesAsLines;
+          })
+          .join("");
 
         updateErrorMessage(errMessage);
-        updateRequestStatus('FAILED');
+        updateRequestStatus("FAILED");
       });
   };
 
@@ -73,17 +77,15 @@ const AuthenticatedContainer = ({ children }) => {
         }}
         className="authenticated-container"
       >
-
         {!user.token && (
           <LoginFormContainer
             startAuthentication={startAuthentication}
-            disabled={requestStatus === 'STARTED'}
+            disabled={requestStatus === "STARTED"}
             errorMessage={errorMessage}
           />
         )}
 
         {user.token && children}
-
       </div>
     </UserContext.Provider>
   );
