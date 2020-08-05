@@ -5,10 +5,8 @@ import AddRootCategoryBtn from "./components/AddRootCategoryBtn";
 
 import NodesDisplayContainer from "./containers/NodesDisplayContainer";
 import AddRootCategoryFormContainer from "./containers/AddRootCategoryFormContainer";
-import AddAttachmentNodeFormContainer from "./containers/AddAttachmentNodeFormContainer";
 import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContainer";
 import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
-import AddClipboardFormContainer from "./containers/AddClipboardFormContainer";
 import LogOutBtn from "./components/LogOutBtn";
 
 import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
@@ -76,10 +74,12 @@ const App = () => {
 
   // ?????
   const closeInputWindow = () => {
+    fetchNodes();
     changeRootCategoryAddDialogOpen(false);
   };
 
   const closeSubNodeAddDialog = () => {
+    fetchNodes();
     updateParentIdForSubNode();
     changeSubNodeAddDialogOpen(false);
   };
@@ -104,7 +104,6 @@ const App = () => {
         }}
       >
         <AddRootCategoryBtn onClick={openRootCategoryWindow} />
-        {/* <div>{nodes.length}</div> */}
 
         <LogOutBtn />
 
@@ -142,8 +141,8 @@ const App = () => {
               categories={[
                 "Sub Category",
                 "URL link",
-                "Paste clipboard",
-                "Attachment",
+                // "Paste clipboard",
+                // "Attachment",
               ]}
             >
               <AddCategoryNodeFormContainer
@@ -158,17 +157,17 @@ const App = () => {
                 parentId={parentIdForSubNode}
               />
 
-              <AddClipboardFormContainer
+              {/* <AddClipboardFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
                 parentId={parentIdForSubNode}
-              />
+              /> */}
 
-              <AddAttachmentNodeFormContainer
+              {/* <AddAttachmentNodeFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
                 parentId={parentIdForSubNode}
-              />
+              /> */}
             </NewNodeFormSwitch>
           </ModalWindow>
         )}

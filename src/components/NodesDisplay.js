@@ -8,8 +8,8 @@ const NodesDisplay = (props) => {
     <div className="nodes-display">
       {props.nodes.map((node, key) => (
         <NodeContainer
-          key={key}
-          children={node.children.length}
+          key={node.id}
+          counter={node.children.length}
           CategoryName={node.CategoryName}
           id={node.id}
           onAddSubnode={props.onAddSubnode}

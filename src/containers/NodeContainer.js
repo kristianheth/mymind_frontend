@@ -5,19 +5,28 @@ import "./NodeContainer.css";
 
 const NodeContainer = (props) => {
   const [selected, changeSelected] = useState(false);
-  const { children, ...restProps } = props;
+  const [expanded, changeExpanded] = useState(false);
+  const { counter, ...restProps } = props;
 
   const toggleSelected = () => {
     changeSelected(!selected);
   };
 
+  const toggleExpanded = () => {
+    changeExpanded(!expanded);
+  };
+
   return (
     <div>
       <div className="node-container">
-        <Node selected={selected} onTapToSelect={toggleSelected} {...restProps} />
-        <div className={children > 0 ? "node-container-counter" : null}>
-          {children > 0 ? children : null}
-        </div>
+        <Node
+          selected={selected}
+          onTapToSelect={toggleSelected}
+          onToggleExpandTap={toggleExpanded}
+          expanded={expanded}
+          counter={counter}
+          {...restProps}
+        />
       </div>
     </div>
   );
