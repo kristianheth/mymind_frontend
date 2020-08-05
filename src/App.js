@@ -133,7 +133,10 @@ const App = () => {
 
         {rootCategoryAddDialogOpen && (
           <ModalWindow onCloseClick={closeInputWindow}>
-            <AddRootCategoryFormContainer addNewNode={addNewNode} />
+            <AddRootCategoryFormContainer
+              addNewNode={addNewNode}
+              closeInputWindow={closeInputWindow}
+            />
           </ModalWindow>
         )}
 

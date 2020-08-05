@@ -3,22 +3,22 @@ import PropTypes from "prop-types";
 
 import "./AddNewCategoryForm.css";
 
-const AddNewCategoryForm = (props) => {
+const AddNewCategoryForm = ({ newCategoryTitle = '', onNewCategoryTitleChange, onAddButtonClick, }) => {
   return (
     <div className="add-new-category-form">
       <label>Add new category</label>
       <div className="add-new-category-form__text-input">
         <input
           type="text"
-          value={props.newCategoryTitle}
-          onChange={props.onNewCategoryTitleChange}
+          value={newCategoryTitle}
+          onChange={onNewCategoryTitleChange}
           id="category"
           placeholder="type category"
         />
       </div>
       <button
         className="add-new-category-form__button"
-        onClick={props.onAddButtonClick}
+        onClick={onAddButtonClick}
       >
         Add
       </button>
