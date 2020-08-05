@@ -1,4 +1,12 @@
+.node__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .node {
+  position: relative;
+  /* position: relative; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +15,7 @@
   /* color: rgb(207, 23, 85); */
   font-weight: 900;
   padding: 10px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   width: 130px;
   height: 125px;
   border: 3px solid rgb(255, 255, 255);
@@ -17,6 +25,7 @@
   /* opacity: 0.8; */
   background-size: cover;
   cursor: pointer;
+  margin: 30px;
 }
 
 .node:hover {
@@ -32,6 +41,7 @@
   display: flex;
   display: inline-block;
   justify-items: center;
+  z-index: 9999;
 }
 
 .node-selected button {

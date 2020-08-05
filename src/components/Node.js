@@ -17,7 +17,7 @@ const Node = ({
   expanded,
 }) => {
   return (
-    <div>
+    <div className="node__wrapper">
       <div onClick={onTapToSelect} className="node">
 
         {CategoryName}
@@ -33,24 +33,26 @@ const Node = ({
               ""
             )}
         </div>
-      </div>
 
 
-      <div
-        onClick={onToggleExpandTap}
-        className={counter > 0 ? "node-counter" : null}
-      >
-        {expanded
-          ? 'Collapse'
-          : counter > 0 ? counter : null
-        }
-      </div>
-
-      {expanded && (
-        <div className="node-child">
-          <NodeChildContainer parentId={id} onAddSubnode={onAddSubnode} />
+        <div
+          onClick={onToggleExpandTap}
+          className={counter > 0 ? "node-counter" : null}
+        >
+          {expanded
+            ? 'Collapse'
+            : counter > 0 ? counter : null
+          }
         </div>
-      )}
+      </div>
+
+      <div className="node__children">
+        {expanded && (
+          <div className="node-child">
+            <NodeChildContainer parentId={id} onAddSubnode={onAddSubnode} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -3,19 +3,17 @@ import PropTypes from "prop-types";
 
 import NodeContainer from "../containers/NodeContainer";
 
-const NodesDisplay = (props) => {
+const NodesDisplay = ({ nodes = [], onAddSubnode}) => {
   return (
-    <div className="nodes-display">
-      {props.nodes.map((node, key) => (
-        <NodeContainer
-          key={node.id}
-          counter={node.children.length}
-          CategoryName={node.CategoryName}
-          id={node.id}
-          onAddSubnode={props.onAddSubnode}
-        />
-      ))}
-    </div>
+    nodes.map((node, key) => (
+      <NodeContainer
+        key={node.id}
+        counter={node.children.length}
+        CategoryName={node.CategoryName}
+        id={node.id}
+        onAddSubnode={onAddSubnode}
+      />
+    ))
   );
 };
 

@@ -12,23 +12,20 @@ const NodeContainer = (props) => {
     changeSelected(!selected);
   };
 
-  const toggleExpanded = () => {
+  const toggleExpanded = (event) => {
+    event.stopPropagation();
     changeExpanded(!expanded);
   };
 
   return (
-    <div>
-      <div className="node-container">
-        <Node
-          selected={selected}
-          onTapToSelect={toggleSelected}
-          onToggleExpandTap={toggleExpanded}
-          expanded={expanded}
-          counter={counter}
-          {...restProps}
-        />
-      </div>
-    </div>
+    <Node
+      selected={selected}
+      onTapToSelect={toggleSelected}
+      onToggleExpandTap={toggleExpanded}
+      expanded={expanded}
+      counter={counter}
+      {...restProps}
+    />
   );
 };
 
