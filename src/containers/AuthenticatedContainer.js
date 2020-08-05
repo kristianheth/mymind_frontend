@@ -6,7 +6,7 @@ import UserContext from "../context/userContext";
 import axios from "axios";
 import "./AuthenticatedContainer.css";
 
-import laser from "./laserFullHD.jpg";
+import laser from "./laser.jpg";
 
 const AuthenticatedContainer = ({ children }) => {
   const token = localStorage.getItem("token");

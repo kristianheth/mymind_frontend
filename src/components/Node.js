@@ -22,7 +22,7 @@ const Node = ({
   return (
     <div className="node__wrapper">
       <div onClick={onTapToSelect} className="node">
-        {CategoryName}
+        <div className="node-category">{CategoryName}</div>
         <div className="node-link">
           <a href={LinkUrl} target="_blank">
             {LinkName}
