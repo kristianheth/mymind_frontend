@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import UserContext from '../context/userContext';
 
 import "./LogOutBtn.css";
 
 const LogOutBtn = (props) => {
-  const logoutFn = () => {
-    localStorage.removeItem("token", "user");
-    {
-      props.userLoggedIn(false);
-    }
-  };
+  const { logOff } = useContext(UserContext);
 
   return (
     <div>
-      <button className="logout-btn" onClick={logoutFn}>
+      <button className="logout-btn" onClick={logOff}>
         Logout
       </button>
     </div>

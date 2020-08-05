@@ -8,12 +8,20 @@ import "./LoginForm.css";
 const LoginForm = (props) => {
   return (
     <div className="login-form">
+
+      {props.errorMessage && (
+        <div className="login-form__error">
+          {props.errorMessage}
+        </div>
+      )}
+
       <input
         type="text"
         value={props.email}
         onChange={props.onEmailChangeHandler}
         id="email"
         placeholder="your email"
+        disabled={props.disabled}
       />
       <input
         type="password"
@@ -21,10 +29,16 @@ const LoginForm = (props) => {
         onChange={props.onPasswordChangeHandler}
         id="password"
         placeholder="your password"
+        disabled={props.disabled}
       />
       <button onClick={props.onLoginSubmitHandler}>Log in</button>
       <div className="sign-in-form">
-        <button onClick={props.onRegisterSubmitHandler}>Sign in</button>
+        <button
+          onClick={props.onRegisterSubmitHandler}
+          disabled={props.disabled}
+        >
+          Sign in
+        </button>
       </div>
     </div>
   );
@@ -38,6 +52,9 @@ LoginForm.propTypes = {
   onPasswordChangeHandler: PropTypes.func,
 
   onLoginSubmitHandler: PropTypes.func,
+
+  disabled: PropTypes.bool,
+  errorMessage: PropTypes.string,
 };
 
 export default LoginForm;

@@ -93,7 +93,7 @@ const App = () => {
           <AddRootCategoryBtn onClick={openRootCategoryWindow} />
           {/* <div>{nodes.length}</div> */}
 
-          <LogOutBtn userLoggedIn={userLoggedIn} />
+          <LogOutBtn />
 
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}

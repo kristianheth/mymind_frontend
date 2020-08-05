@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
+
+import UserContext from '../context/userContext';
+
 import axios from "axios";
 import "./AuthenticatedContainer.css";
 
 import laser from "./laserFullHD.jpg";
-import neural from "./NeuralNetwork.jpg";
 
 const AuthenticatedContainer = ({ children }) => {
-  let token;
-  let initialUser;
-  const storedToken = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-  if (storedToken) {
-    token = storedToken;
-  }
+  let initialUser;
 
   const storedUser = localStorage.getItem("user");
 
@@ -23,7 +21,18 @@ const AuthenticatedContainer = ({ children }) => {
 
   const [user, updateUser] = useState({ token, user: initialUser });
 
+  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [errorMessage, updateErrorMessage] = useState();
+
+  const logOff = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("user", "");
+    updateUser({ token: undefined, user: undefined });
+  };
+
   const startAuthentication = (email, password) => {
+    updateRequestStatus('STARTED');
+
     // Request API.
     axios
       .post("https://mymind-backend.herokuapp.com/auth/local", {
@@ -36,37 +45,45 @@ const AuthenticatedContainer = ({ children }) => {
         localStorage.setItem("token", response.data.jwt);
 
         updateUser({ token: response.data.jwt, user: response.data.user });
-        console.log("Well done!");
-        console.log("User profile", response.data.user);
-        console.log("User token", response.data.jwt);
+        updateRequestStatus('SUCCESS');
       })
       .catch((error) => {
-        console.log("An error occurred:", error.response);
+        const { data } = error.response.data;
+        const errMessage = data.map(({ messages }) => {
+          const messagesAsLines = messages.map(({ message }) => message).join('\n');
+          return messagesAsLines;
+        }).join('');
+        updateErrorMessage(errMessage);
+        updateRequestStatus('FAILED');
       });
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${laser})`,
-        // backgroundImage: `url(${neural})`,
-        backgroundRepeat: `no-repeat`,
-        backgroundSize: `cover`,
-        backgroundPosition: `50% 70%`,
-        // backgroundPositionY
-      }}
-      className="authenticated-container"
-    >
-      {/* <UserContext.Provider value={{ user: {}, logOff }}> */}
+    <UserContext.Provider value={{ user, logOff }}>
+      <div
+        style={{
+          backgroundImage: `url(${laser})`,
+          // backgroundImage: `url(${neural})`,
+          backgroundRepeat: `no-repeat`,
+          backgroundSize: `cover`,
+          backgroundPosition: `50% 70%`,
+          // backgroundPositionY
+        }}
+        className="authenticated-container"
+      >
 
-      {!user.token && (
-        <LoginFormContainer startAuthentication={startAuthentication} />
-      )}
+        {!user.token && (
+          <LoginFormContainer
+            startAuthentication={startAuthentication}
+            disabled={requestStatus === 'STARTED'}
+            errorMessage={errorMessage}
+          />
+        )}
 
-      {user.token && children}
+        {user.token && children}
 
-      {/* </UserContext.Provider> */}
-    </div>
+      </div>
+    </UserContext.Provider>
   );
 };
 

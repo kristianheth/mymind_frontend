@@ -27,6 +27,8 @@ const LoginFormContainer = (props) => {
       password={password}
       onPasswordChangeHandler={onPasswordChangeHandler}
       onLoginSubmitHandler={onLoginSubmitHandler}
+      disabled={props.disabled}
+      errorMessage={props.errorMessage}
     />
   );
 };
