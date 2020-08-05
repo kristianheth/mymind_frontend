@@ -48,6 +48,7 @@ const App = () => {
       })
       .then((response) => {
         changeNodes(response.data);
+        updateRequestStatus("SUCCESS");
       })
 
       .catch((error) => {
