@@ -11,6 +11,7 @@ const NodesDisplay = (props) => {
           key={key}
           children={node.children.length}
           CategoryName={node.CategoryName}
+          id={node.id}
           onAddSubnode={props.onAddSubnode}
         />
       ))}

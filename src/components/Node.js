@@ -13,7 +13,7 @@ const Node = (props) => {
           <div className="node-selected">
             <button onClick={props.onEditTap}>Edit</button>
             <button onClick={props.onDeleteTap}>Delete</button>
-            <button onClick={props.onAddSubnode}>Add subnode</button>
+            <button onClick={() => props.onAddSubnode(props.id)}>Add subnode</button>
           </div>
         ) : (
           ""

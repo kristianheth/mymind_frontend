@@ -9,14 +9,13 @@ const AddRootCategoryFormContainer = (props) => {
   const { user } = useContext(UserContext);
 
   const [requestStatus, updateRequestStatus] = useState('IDLE');
-  const [errorMessage, updateErrorMessage] = useState();
 
   const onNewCategoryTitleChange = (event) => {
     console.log('test');
     changeNewCategoryTitle(event.target.value);
   };
 
-  const createRootCategory = (email, password) => {
+  const createRootCategory = () => {
     updateRequestStatus('STARTED');
 
     // Request API.
@@ -29,7 +28,7 @@ const AddRootCategoryFormContainer = (props) => {
           Authorization: `Bearer ${user.token}`
         },
       })
-      .then((response) => {
+      .then(() => {
         updateRequestStatus('SUCCESS');
         props.closeInputWindow();
       })
@@ -44,7 +43,6 @@ const AddRootCategoryFormContainer = (props) => {
       newCategoryTitle={newCategoryTitle}
       onNewCategoryTitleChange={onNewCategoryTitleChange}
       onAddButtonClick={createRootCategory}
-      errMessage={errorMessage}
       requestStatus={requestStatus}
     />
   );

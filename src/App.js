@@ -22,6 +22,7 @@ import "./index.css";
 const App = () => {
   const [requestStatus, updateRequestStatus] = useState('IDLE');
   const [errorMessage, updateErrorMessage] = useState();
+  const [parentIdForSubNode, updateParentIdForSubNode] = useState();
 
   const { user } = useContext(UserContext);
 
@@ -73,19 +74,13 @@ const App = () => {
     changeNodes([...nodes, node]);
   };
 
-  const openNewNodeDialog = () => {
-    changeDialogsOpen({
-      ...dialogsOpen,
-      subNodeAddDialogOpen: false,
-    });
-  };
-
   // ?????
   const closeInputWindow = () => {
     changeRootCategoryAddDialogOpen(false);
   };
 
   const closeSubNodeAddDialog = () => {
+    updateParentIdForSubNode();
     changeSubNodeAddDialogOpen(false);
   };
 
@@ -94,8 +89,9 @@ const App = () => {
     changeSubNodeAddDialogOpen(false);
   };
 
-  const openNewNodeWindow = () => {
+  const openNewNodeWindow = (currentParentId) => {
     changeRootCategoryAddDialogOpen(false);
+    updateParentIdForSubNode(currentParentId);
     changeSubNodeAddDialogOpen(true);
   };
 
@@ -153,21 +149,25 @@ const App = () => {
               <AddCategoryNodeFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
+                parentId={parentIdForSubNode}
               />
 
               <AddUrlLinkNodeFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
+                parentId={parentIdForSubNode}
               />
 
               <AddClipboardFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
+                parentId={parentIdForSubNode}
               />
 
               <AddAttachmentNodeFormContainer
                 addNewNode={addNewNode}
                 closeSubNodeAddDialog={closeSubNodeAddDialog}
+                parentId={parentIdForSubNode}
               />
             </NewNodeFormSwitch>
           </ModalWindow>
