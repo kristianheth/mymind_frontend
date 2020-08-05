@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Node from "../components/Node";
 
-import "../components/Node.css";
+import "./NodeContainer.css";
 
 const NodeContainer = (props) => {
   const [selected, changeSelected] = useState(false);

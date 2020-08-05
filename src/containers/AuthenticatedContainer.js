@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import LoginFormContainer from "./LoginFormContainer";
 import axios from "axios";
+import "./AuthenticatedContainer.css";
+
+import laser from "./laserFullHD.jpg";
+import neural from "./NeuralNetwork.jpg";
 
 const AuthenticatedContainer = ({ children }) => {
   let token;
@@ -42,7 +46,17 @@ const AuthenticatedContainer = ({ children }) => {
   };
 
   return (
-    <div className="authenticated-container">
+    <div
+      style={{
+        backgroundImage: `url(${laser})`,
+        // backgroundImage: `url(${neural})`,
+        backgroundRepeat: `no-repeat`,
+        backgroundSize: `cover`,
+        backgroundPosition: `50% 70%`,
+        // backgroundPositionY
+      }}
+      className="authenticated-container"
+    >
       {/* <UserContext.Provider value={{ user: {}, logOff }}> */}
 
       {!user.token && (

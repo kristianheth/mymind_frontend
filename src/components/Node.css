@@ -1,24 +1,54 @@
-.node-container {
-  position: relative;
-}
-
-.node-container-counter {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  color: rgb(206, 23, 99);
-  font-weight: 800;
-  border: solid 1px #000;
-  background-color: seashell;
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 1.5rem; */
+  color: #000;
+  /* color: rgb(207, 23, 85); */
+  font-weight: 900;
+  padding: 10px;
+  margin-bottom: 100px;
+  width: 130px;
+  height: 125px;
+  border: 3px solid rgb(255, 255, 255);
   border-radius: 50%;
-  padding: 5px 11px;
-  width: 10px;
+  background-color: rgba(236, 214, 15, 0.92);
+  /* background-image: url("./NeuralNetwork.jpg"); */
+  /* opacity: 0.8; */
+  background-size: cover;
   cursor: pointer;
 }
 
-/* .node-container-counter:empty:after {
-  content: "Fill me";
-  padding: 4px;
-  width: 200px;
-  right: 40px;
-} */
+.node:hover {
+  border: 2px solid rgb(207, 23, 85);
+  background-color: rgb(252, 255, 64);
+}
+
+.node-selected {
+  /* font-size: 0.7rem; */
+  position: absolute;
+  top: 90px;
+  right: 14px;
+  display: flex;
+  display: inline-block;
+  justify-items: center;
+}
+
+.node-selected button {
+  background-color: rgb(252, 255, 64);
+  border-radius: 3px;
+  border: 1px solid rgb(255, 255, 255);
+  display: block;
+  width: 100px;
+  padding: 2px;
+  margin-bottom: 1px;
+  font-weight: 700;
+  color: rgb(66, 66, 66);
+  cursor: pointer;
+}
+
+.node-selected button:hover {
+  border: 2px solid rgb(207, 23, 85);
+  background-color: rgba(172, 173, 74, 0.9);
+  color: rgba(255, 255, 255);
+}

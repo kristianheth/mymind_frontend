@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./Node.css";
+
 const Node = (props) => {
   return (
     <div onClick={props.onTapToSelect} className="node">
