@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 import NodesDisplay from "../components/NodesDisplay";
 import "./NodesDisplayContainer.css";
 
-const NodesDisplayContainer = ({
-  nodes,
-  openNewNodeDialog,
-  fetchNodes,
-}) => {
+const NodesDisplayContainer = ({ nodes, openNewNodeDialog, fetchNodes }) => {
   return (
     <div className="nodes-display-container">
       <NodesDisplay

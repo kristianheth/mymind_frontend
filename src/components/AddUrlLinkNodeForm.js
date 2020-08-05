@@ -7,8 +7,6 @@ const AddUrlLinkNodeForm = (props) => {
   return (
     <div className="add-url-link-node-form">
       <div>
-        {/* <label>Type category</label> */}
-
         <input
           className="add-url-link-node-form__text-input"
           type="text"

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import NodeChildContainer from "../containers/NodeChildContainer";
+import collapse from "./collapse.png";
 
 import "./Node.css";
 
@@ -15,14 +16,19 @@ const Node = ({
   counter,
   onToggleExpandTap,
   expanded,
+  LinkName,
+  LinkUrl,
 }) => {
   return (
     <div className="node__wrapper">
       <div onClick={onTapToSelect} className="node">
-
         {CategoryName}
-
-        <div >
+        <div className="node-link">
+          <a href={LinkUrl} target="_blank">
+            {LinkName}
+          </a>
+        </div>
+        <div>
           {selected ? (
             <div className="node-selected">
               <button onClick={onEditTap}>Edit</button>
@@ -30,19 +36,19 @@ const Node = ({
               <button onClick={() => onAddSubnode(id)}>Add subnode</button>
             </div>
           ) : (
-              ""
-            )}
+            ""
+          )}
         </div>
-
 
         <div
           onClick={onToggleExpandTap}
           className={counter > 0 ? "node-counter" : null}
         >
-          {expanded
-            ? 'Collapse'
-            : counter > 0 ? counter : null
-          }
+          {expanded ? (
+            <img src={collapse} className="node-expanded" />
+          ) : counter > 0 ? (
+            counter
+          ) : null}
         </div>
       </div>
 
@@ -60,6 +66,8 @@ const Node = ({
 Node.propTypes = {
   Type: PropTypes.string,
   CategoryName: PropTypes.string,
+  LinkName: PropTypes.string,
+  LinkUrl: PropTypes.string,
   expanded: PropTypes.bool,
   selected: PropTypes.bool,
   children: PropTypes.array,

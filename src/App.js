@@ -41,7 +41,8 @@ const App = () => {
     updateRequestStatus("STARTED");
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
+      .get("https://mymind-backend.herokuapp.com/nodes?parent_null=true", {
+        // .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -77,7 +78,6 @@ const App = () => {
     changeNodes([...nodes, node]);
   };
 
-  // ?????
   const closeInputWindow = () => {
     fetchNodes();
     changeRootCategoryAddDialogOpen(false);

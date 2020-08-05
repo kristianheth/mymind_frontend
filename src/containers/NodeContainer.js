@@ -10,7 +10,7 @@ const NodeContainer = ({ fetchNodes, ...props }) => {
   const [expanded, changeExpanded] = useState(false);
   const { counter, ...restProps } = props;
 
-  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [requestStatus, updateRequestStatus] = useState("IDLE");
   const [errorMessage, updateErrorMessage] = useState();
 
   const { user } = useContext(UserContext);
@@ -25,20 +25,35 @@ const NodeContainer = ({ fetchNodes, ...props }) => {
   };
 
   const deleteNode = (nodeId) => {
-    updateRequestStatus('STARTED');
+    updateRequestStatus("STARTED");
 
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/nodes/${nodeId}`, {
         headers: {
-          Authorization: `Bearer ${user.token}`
+          Authorization: `Bearer ${user.token}`,
         },
       })
       .then(() => {
         fetchNodes();
-        updateRequestStatus('SUCCESS');
+        updateRequestStatus("SUCCESS");
       })
-      .catch(() => {
-        updateRequestStatus('FAILED');
+      // .catch(() => {
+      //   updateRequestStatus('FAILED');
+      // });
+      .catch((error) => {
+        const { data } = error.response.data;
+
+        const errMessage = data
+          .map(({ messages }) => {
+            const messagesAsLines = messages
+              .map(({ message }) => message)
+              .join("\n");
+            return messagesAsLines;
+          })
+          .join("");
+
+        updateErrorMessage(errMessage);
+        updateRequestStatus("FAILED");
       });
   };
 

@@ -85,6 +85,8 @@ const NodeChildContainer = ({ parentId, onAddSubnode }) => {
               key={node.id}
               counter={node.children.length}
               CategoryName={node.CategoryName}
+              LinkName={node.LinkName}
+              LinkUrl={node.LinkUrl}
               id={node.id}
               onAddSubnode={onAddSubnode}
               onDeleteTap={deleteNode}
