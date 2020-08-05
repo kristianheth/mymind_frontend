@@ -35,7 +35,7 @@ const AuthenticatedContainer = ({ children }) => {
 
     // Request API.
     axios
-      .post("https://mymind-backend.herokuapp.com/auth/local", {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/local`, {
         identifier: email,
         password: password,
       })
@@ -49,10 +49,12 @@ const AuthenticatedContainer = ({ children }) => {
       })
       .catch((error) => {
         const { data } = error.response.data;
+
         const errMessage = data.map(({ messages }) => {
           const messagesAsLines = messages.map(({ message }) => message).join('\n');
           return messagesAsLines;
         }).join('');
+
         updateErrorMessage(errMessage);
         updateRequestStatus('FAILED');
       });

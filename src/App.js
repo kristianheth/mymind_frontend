@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import AddRootCategoryBtn from "./components/AddRootCategoryBtn";
-import AuthenticatedContainer from "./containers/AuthenticatedContainer";
+
 import NodesDisplayContainer from "./containers/NodesDisplayContainer";
 import AddRootCategoryFormContainer from "./containers/AddRootCategoryFormContainer";
 import AddAttachmentNodeFormContainer from "./containers/AddAttachmentNodeFormContainer";
@@ -15,10 +15,16 @@ import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
 import ModalWindow from "./components/ModalWindow";
 
 import DialogsContext from "./context/dialogsContext";
+import UserContext from "./context/userContext";
 
 import "./index.css";
 
 const App = () => {
+  const [requestStatus, updateRequestStatus] = useState('IDLE');
+  const [errorMessage, updateErrorMessage] = useState();
+
+  const { user } = useContext(UserContext);
+
   const [dialogsOpen, changeDialogsOpen] = useState({
     rootCategoryAddDialogOpen: false,
     subNodeAddDialogOpen: false,
@@ -28,23 +34,39 @@ const App = () => {
     false
   );
 
-  const [userLoggedInStatus, changeUserLoggedInStatus] = useState(true);
-
   const [subNodeAddDialogOpen, changeSubNodeAddDialogOpen] = useState(false);
 
   const [nodes, changeNodes] = useState([]);
 
-  useEffect(() => {
+  const fetchNodes = () => {
+    updateRequestStatus('STARTED');
+
     axios
-      .get("https://mymind-backend.herokuapp.com/nodes?parent_null=true")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        },
+      })
       .then((response) => {
-        console.log(response);
         changeNodes(response.data);
+        updateRequestStatus('SUCCESS');
       })
       .catch((error) => {
-        console.log(error);
+        const { data } = error.response.data;
+
+        const errMessage = data.map(({ messages }) => {
+          const messagesAsLines = messages.map(({ message }) => message).join('\n');
+          return messagesAsLines;
+        }).join('');
+
+        updateErrorMessage(errMessage);
+        updateRequestStatus('FAILED');
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchNodes();
+  }, []); // eslint-disable-line
 
   // eg used here: AddRootCategoryFormContainer
   const addNewNode = (node) => {
@@ -63,10 +85,6 @@ const App = () => {
     changeRootCategoryAddDialogOpen(false);
   };
 
-  const userLoggedIn = () => {
-    changeUserLoggedInStatus(false);
-  };
-
   const closeSubNodeAddDialog = () => {
     changeSubNodeAddDialogOpen(false);
   };
@@ -82,64 +100,76 @@ const App = () => {
   };
 
   return (
-    <div className="authenticated-container">
-      <AuthenticatedContainer>
-        <DialogsContext.Provider
-          value={{
-            dialogsOpen,
-            changeDialogsOpen,
-          }}
-        >
-          <AddRootCategoryBtn onClick={openRootCategoryWindow} />
-          {/* <div>{nodes.length}</div> */}
+    <div className="App">
+      <DialogsContext.Provider
+        value={{
+          dialogsOpen,
+          changeDialogsOpen,
+        }}
+      >
+        <AddRootCategoryBtn onClick={openRootCategoryWindow} />
+        {/* <div>{nodes.length}</div> */}
 
-          <LogOutBtn />
+        <LogOutBtn />
 
+        {(requestStatus === 'STARTED' || requestStatus === 'IDLE') && (
+          <div className="loading">
+            Loading...
+          </div>
+        )}
+
+        {requestStatus === 'SUCCESS' && (
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}
             nodes={nodes}
           />
+        )}
 
-          {rootCategoryAddDialogOpen && (
-            <ModalWindow onCloseClick={closeInputWindow}>
-              <AddRootCategoryFormContainer addNewNode={addNewNode} />
-            </ModalWindow>
-          )}
+        {requestStatus === 'FAILED' && (
+          <div className="error_message">
+            {errorMessage}
+          </div>
+        )}
 
-          {subNodeAddDialogOpen && (
-            <ModalWindow onCloseClick={closeSubNodeAddDialog}>
-              <NewNodeFormSwitch
-                categories={[
-                  "Sub Category",
-                  "URL link",
-                  "Paste clipboard",
-                  "Attachment",
-                ]}
-              >
-                <AddCategoryNodeFormContainer
-                  addNewNode={addNewNode}
-                  closeSubNodeAddDialog={closeSubNodeAddDialog}
-                />
+        {rootCategoryAddDialogOpen && (
+          <ModalWindow onCloseClick={closeInputWindow}>
+            <AddRootCategoryFormContainer addNewNode={addNewNode} />
+          </ModalWindow>
+        )}
 
-                <AddUrlLinkNodeFormContainer
-                  addNewNode={addNewNode}
-                  closeSubNodeAddDialog={closeSubNodeAddDialog}
-                />
+        {subNodeAddDialogOpen && (
+          <ModalWindow onCloseClick={closeSubNodeAddDialog}>
+            <NewNodeFormSwitch
+              categories={[
+                "Sub Category",
+                "URL link",
+                "Paste clipboard",
+                "Attachment",
+              ]}
+            >
+              <AddCategoryNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
 
-                <AddClipboardFormContainer
-                  addNewNode={addNewNode}
-                  closeSubNodeAddDialog={closeSubNodeAddDialog}
-                />
+              <AddUrlLinkNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
 
-                <AddAttachmentNodeFormContainer
-                  addNewNode={addNewNode}
-                  closeSubNodeAddDialog={closeSubNodeAddDialog}
-                />
-              </NewNodeFormSwitch>
-            </ModalWindow>
-          )}
-        </DialogsContext.Provider>
-      </AuthenticatedContainer>
+              <AddClipboardFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
+
+              <AddAttachmentNodeFormContainer
+                addNewNode={addNewNode}
+                closeSubNodeAddDialog={closeSubNodeAddDialog}
+              />
+            </NewNodeFormSwitch>
+          </ModalWindow>
+        )}
+      </DialogsContext.Provider>
     </div>
   );
 };

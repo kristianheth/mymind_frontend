@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import AuthenticatedContainer from './containers/AuthenticatedContainer';
 import "./index.css";
 // import "./index.sass";
 
@@ -7,7 +8,9 @@ import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthenticatedContainer>
+      <App />
+    </AuthenticatedContainer>
   </React.StrictMode>,
   document.getElementById("root")
 );
