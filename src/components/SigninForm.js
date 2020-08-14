@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './LoginForm.css';
+import './SigninForm.css';
 
-// stupid component renders UI
-
-const LoginForm = (props) => {
+const SigninForm = (props) => {
   return (
-    <div className='login-form'>
+    <div className='sign-in-form'>
       {props.errorMessage && (
         <div className='login-form__error'>{props.errorMessage}</div>
       )}
 
+      <input
+        type='text'
+        value={props.username}
+        onChange={props.onUsernameChangeHandler}
+        id='username'
+        placeholder='Please enter a username'
+        disabled={props.disabled}
+      />
       <input
         type='text'
         value={props.email}
@@ -28,35 +34,32 @@ const LoginForm = (props) => {
         placeholder='Please enter your password'
         disabled={props.disabled}
       />
-      <button onClick={props.onLoginSubmitHandler}>Log in</button>
-      <div>
-        Not signed in yet? Register here:
-        <button
-          // onClick={props.onRegisterSubmitHandler}  // Original
-          onClick={props.triggerSignin}
-          // onClick={props.onSigninSubmitHandler}
-          disabled={props.disabled}
-        >
-          Sign in
-        </button>
-      </div>
+
+      <button onClick={props.onSigninSubmitHandler} disabled={props.disabled}>
+        Sign in
+      </button>
+
+      <button onClick={props.triggerSignin} disabled={props.disabled}>
+        Return to Log in
+      </button>
     </div>
   );
 };
 
-LoginForm.propTypes = {
+SigninForm.propTypes = {
+  username: PropTypes.string,
+  onUsernameChangeHandler: PropTypes.func,
+
   email: PropTypes.string,
   onEmailChangeHandler: PropTypes.func,
 
   password: PropTypes.string,
   onPasswordChangeHandler: PropTypes.func,
 
-  onLoginSubmitHandler: PropTypes.func,
-  triggerSignin: PropTypes.func,
   onSigninSubmitHandler: PropTypes.func,
 
   disabled: PropTypes.bool,
   errorMessage: PropTypes.string,
 };
 
-export default LoginForm;
+export default SigninForm;
