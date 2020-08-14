@@ -29,8 +29,8 @@ const LoginForm = (props) => {
         disabled={props.disabled}
       />
       <button onClick={props.onLoginSubmitHandler}>Log in</button>
-      <div>
-        Not signed in yet? Register here:
+      <div className='login-form__sign-in'>
+        <div>Not signed in yet? Please register here:</div>
         <button
           // onClick={props.onRegisterSubmitHandler}  // Original
           onClick={props.triggerSignin}

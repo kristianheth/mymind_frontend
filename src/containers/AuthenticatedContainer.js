@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LoginFormContainer from './LoginFormContainer';
-import SigninFormContainer from './SigninFormContainer';
 
 import UserContext from '../context/userContext';
 
@@ -124,14 +123,6 @@ const AuthenticatedContainer = ({ children }) => {
             errorMessage={errorMessage}
           />
         )}
-
-        {/* {!user.token && (
-          <SigninFormContainer
-            startRegistration={startRegistration}
-            disabled={requestStatus === 'STARTED'}
-            errorMessage={errorMessage}
-          />
-        )} */}
 
         {user.token && children}
       </div>
