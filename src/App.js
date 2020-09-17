@@ -1,24 +1,28 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 
-import AddRootCategoryBtn from "./components/AddRootCategoryBtn";
+import AddRootCategoryBtn from './components/AddRootCategoryBtn';
 
-import NodesDisplayContainer from "./containers/NodesDisplayContainer";
-import AddRootCategoryFormContainer from "./containers/AddRootCategoryFormContainer";
-import AddCategoryNodeFormContainer from "./containers/AddCategoryNodeFormContainer";
-import AddUrlLinkNodeFormContainer from "./containers/AddUrlLinkNodeFormContainer";
-import LogOutBtn from "./components/LogOutBtn";
+import NodesDisplayContainer from './containers/NodesDisplayContainer';
+import AddRootCategoryFormContainer from './containers/AddRootCategoryFormContainer';
+import AddCategoryNodeFormContainer from './containers/AddCategoryNodeFormContainer';
+import AddUrlLinkNodeFormContainer from './containers/AddUrlLinkNodeFormContainer';
+import LogOutBtn from './components/LogOutBtn';
 
-import NewNodeFormSwitch from "./components/NewNodeFormSwitch";
-import ModalWindow from "./components/ModalWindow";
+import D3Chart from './components/D3Chart';
 
-import DialogsContext from "./context/dialogsContext";
-import UserContext from "./context/userContext";
+import NewNodeFormSwitch from './components/NewNodeFormSwitch';
+import ModalWindow from './components/ModalWindow';
 
-import "./index.css";
+import DialogsContext from './context/dialogsContext';
+import UserContext from './context/userContext';
+
+import './index.css';
+
+import * as d3 from 'd3';
 
 const App = () => {
-  const [requestStatus, updateRequestStatus] = useState("IDLE");
+  const [requestStatus, updateRequestStatus] = useState('IDLE');
   const [errorMessage, updateErrorMessage] = useState();
   const [parentIdForSubNode, updateParentIdForSubNode] = useState();
 
@@ -38,18 +42,18 @@ const App = () => {
   const [nodes, changeNodes] = useState([]);
 
   const fetchNodes = () => {
-    updateRequestStatus("STARTED");
+    updateRequestStatus('STARTED');
 
     axios
-      .get("https://mymind-backend.herokuapp.com/nodes?parent_null=true", {
-        // .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
+      // .get("https://mymind-backend.herokuapp.com/nodes?parent_null=true", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/nodes?parent_null=true`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       })
       .then((response) => {
         changeNodes(response.data);
-        updateRequestStatus("SUCCESS");
+        updateRequestStatus('SUCCESS');
       })
 
       .catch((error) => {
@@ -59,13 +63,13 @@ const App = () => {
           .map(({ messages }) => {
             const messagesAsLines = messages
               .map(({ message }) => message)
-              .join("\n");
+              .join('\n');
             return messagesAsLines;
           })
-          .join("");
+          .join('');
 
         updateErrorMessage(errMessage);
-        updateRequestStatus("FAILED");
+        updateRequestStatus('FAILED');
       });
   };
 
@@ -101,7 +105,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <DialogsContext.Provider
         value={{
           dialogsOpen,
@@ -112,20 +116,25 @@ const App = () => {
 
         <LogOutBtn />
 
-        {(requestStatus === "STARTED" || requestStatus === "IDLE") && (
-          <div className="loading">Loading...</div>
+        {(requestStatus === 'STARTED' || requestStatus === 'IDLE') && (
+          <div className='loading'>Loading...</div>
         )}
 
-        {requestStatus === "SUCCESS" && (
+        {requestStatus === 'SUCCESS' && (
           <NodesDisplayContainer
             openNewNodeDialog={openNewNodeWindow}
             nodes={nodes}
             fetchNodes={fetchNodes}
           />
+          // <D3Chart
+          //   // openNewNodeDialog={openNewNodeWindow}
+          //   nodes={nodes}
+          //   fetchNodes={fetchNodes}
+          // />
         )}
 
-        {requestStatus === "FAILED" && (
-          <div className="error_message">{errorMessage}</div>
+        {requestStatus === 'FAILED' && (
+          <div className='error_message'>{errorMessage}</div>
         )}
 
         {rootCategoryAddDialogOpen && (
@@ -141,8 +150,8 @@ const App = () => {
           <ModalWindow onCloseClick={closeSubNodeAddDialog}>
             <NewNodeFormSwitch
               categories={[
-                "Sub Category",
-                "URL link",
+                'Sub Category',
+                'URL link',
                 // "Paste clipboard",
                 // "Attachment",
               ]}
