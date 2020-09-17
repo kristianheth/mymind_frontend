@@ -8,18 +8,18 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-self: center;
-  font-size: 0.7rem;
+  justify-content: center;
+  font-size: 0.9rem;
   color: #000;
   /* color: rgb(207, 23, 85); */
-  font-weight: 900;
+  font-weight: 700;
   padding: 5px;
   /* margin-bottom: 100px; */
-  width: 90px;
-  height: 80px;
-  border: 3px solid rgb(255, 255, 255);
+  width: 180px;
+  height: 180px;
+  /* border: 3px solid rgb(255, 255, 255); */
   border-radius: 50%;
-  background-color: rgba(236, 214, 15, 0.92);
+  background-color: rgba(236, 214, 15, 0.6);
   /* background-image: url("./NeuralNetwork.jpg"); */
   /* opacity: 0.8; */
   background-size: cover;
@@ -27,16 +27,21 @@
   margin: 1px 10px 1px 2px;
 }
 
+/* .node-category {
+  position: absolute;
+  left: 60px; 
+  justify-self: center;
+} */
+
 .node:hover {
-  border: 3px solid rgb(207, 23, 85);
-  background-color: rgb(252, 255, 64);
+  /* border: 3px solid rgb(207, 23, 85); */
+  background-color: rgba(236, 214, 15, 0.75);
 }
 
 .node-selected {
-  /* font-size: 0.7rem; */
   position: absolute;
-  top: 60px;
-  left: -5px;
+  bottom: 10px;
+  left: 50px;
   display: flex;
   display: inline-block;
   justify-items: center;
@@ -45,21 +50,22 @@
 
 .node-selected button {
   background-color: rgb(252, 255, 64);
+  font-size: 0.65rem;
   border-radius: 3px;
   border: 1px solid rgb(255, 255, 255);
   display: block;
-  width: 100px;
+  width: 80px;
   padding: 2px;
   margin-bottom: 1px;
   font-weight: 700;
-  color: rgb(66, 66, 66);
+  color: #000;
   cursor: pointer;
 }
 
 .node-selected button:hover {
   border: 2px solid rgb(207, 23, 85);
-  background-color: rgba(172, 173, 74, 0.9);
-  color: rgba(255, 255, 255);
+  background-color: rgba(172, 173, 74, 0.6);
+  /* color: rgba(255, 255, 255); */
 }
 
 .node-counter {
@@ -67,27 +73,27 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -15px;
-  right: 20px;
-  color: #000;
+  top: 0;
+  right: 55px;
+  color: #fff;
   font-weight: 800;
   font-size: 0.8rem;
   border: solid 3px #fff;
-  background-color: rgba(255, 245, 238, 0.9);
+  background-color: rgb(207, 23, 85);
   border-radius: 50%;
-  height: 30px;
-  width: 32px;
+  height: 60px;
+  width: 64px;
   padding: 1px 9px;
   cursor: pointer;
 }
 
 .node-counter:hover {
-  border: solid 3px rgb(207, 23, 85);
-  background-color: rgba(255, 245, 238, 1);
+  border: solid 3px rgba(172, 173, 74, 0.8);
+  /* background-color: rgba(207, 23, 85, 0.8); */
 }
 
 .node-expanded {
-  background-image: url("./collapse.png");
+  background-image: url('./collapse.png');
   width: 20px;
   height: 20px;
   object-fit: contain;
@@ -99,12 +105,12 @@
   font-weight: 900;
 }
 
-.node-category {
-  position: absolute;
-  left: 10px;
-  text-align: center;
-}
 .node-link a {
   border-radius: 5px;
   /* margin-left: 20px; */
+}
+
+.node-children {
+  width: 90px;
+  height: 40px;
 }
