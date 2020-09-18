@@ -1,6 +1,6 @@
 .node__wrapper {
+  display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .node {
@@ -44,7 +44,6 @@
   font-size: 0.65rem;
   border-radius: 3px;
   border: 2px solid #fff;
-  align-self: center;
   margin: 1px;
   font-weight: 900;
   color: #fff;
@@ -92,7 +91,11 @@
   font-weight: 900;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
+  .node__wrapper {
+    display: inline-block;
+  }
+
   .node {
     width: 90px;
     height: 90px;
@@ -101,7 +104,8 @@
   }
 
   .node-selected {
-    left: 5px;
+    left: 22px;
+    bottom: 15px;
   }
   .node-selected button {
     font-size: 0.5rem;
