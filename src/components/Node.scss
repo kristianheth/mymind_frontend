@@ -1,5 +1,6 @@
 $node-width: 140px;
 $node-height: 140px;
+$z-index-parent: 0;
 
 .node__wrapper {
   display: flex;
@@ -19,17 +20,18 @@ $node-height: 140px;
   width: $node-width;
   height: $node-height;
   border-radius: 50%;
-  background-color: rgba(236, 214, 15, 0.7);
+  background-color: rgba(236, 214, 15, 0.8);
   background-size: cover;
   cursor: pointer;
   margin: 1px 10px 1px 2px;
+  z-index: $z-index-parent;
 
   &:hover {
     background-color: rgba(236, 214, 15, 0.75);
   }
 }
 
-.reduce {
+.node:first-child .reduce {
   width: $node-width / 2;
   height: $node-height / 2;
   font-size: 0.5rem;
@@ -100,6 +102,16 @@ $node-height: 140px;
 
   border-radius: 5px;
 }
+
+.node__children:last-child {
+  position: absolute;
+  top: 140px;
+  z-index: $z-index-parent + 1;
+}
+
+// .node-child {
+//   z-index: $z-index-parent + 1;
+// }
 
 @media only screen and (max-width: 850px) {
   .node__wrapper {
