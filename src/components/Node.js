@@ -40,6 +40,7 @@ const Node = ({
   return (
     <div className='node__wrapper'>
       {/* <svg ref={ref} /> */}
+
       <div onClick={onTapToSelect} className='node'>
         <div className='node-category'>{CategoryName}</div>
 
@@ -51,9 +52,14 @@ const Node = ({
         <div>
           {selected ? (
             <div className='node-selected'>
-              <button onClick={onEditTap}>Edit</button>
-              <button onClick={() => onDeleteTap(id)}>Delete</button>
-              <button onClick={() => onAddSubnode(id)}>Add subnode</button>
+              {/* <button onClick={onEditTap}>Edit</button> */}
+              <button
+                style={{ color: 'rgb(207, 23, 85)' }}
+                onClick={() => onDeleteTap(id)}
+              >
+                x
+              </button>
+              <button onClick={() => onAddSubnode(id)}>+</button>
             </div>
           ) : (
             ''
@@ -71,7 +77,6 @@ const Node = ({
           ) : null}
         </div>
       </div>
-
       <div className='node__children'>
         {expanded && (
           <div className='node-child'>

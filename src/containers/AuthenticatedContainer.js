@@ -64,12 +64,9 @@ const AuthenticatedContainer = ({ children }) => {
       });
   };
 
-  ///////////// Trial to build Signin ... ////////////////
-
   const startRegistration = (username, email, password) => {
     updateRequestStatus('STARTED');
 
-    // Request API.
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/auth/local/register`, {
         username: username,
@@ -107,11 +104,9 @@ const AuthenticatedContainer = ({ children }) => {
       <div
         style={{
           backgroundImage: `url(${neural})`,
-          // backgroundImage: `url(${neural})`,
           backgroundRepeat: `no-repeat`,
           backgroundSize: `cover`,
-          backgroundPosition: `50% 70%`,
-          // backgroundPositionY
+          backgroundPosition: `50% 50%`,
         }}
         className='authenticated-container'
       >

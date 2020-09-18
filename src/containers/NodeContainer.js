@@ -55,17 +55,15 @@ const NodeContainer = ({ fetchNodes, ...props }) => {
   };
 
   return (
-    <>
-      <Node
-        selected={selected}
-        onTapToSelect={toggleSelected}
-        onToggleExpandTap={toggleExpanded}
-        onDeleteTap={deleteNode}
-        expanded={expanded}
-        counter={counter}
-        {...restProps}
-      />
-    </>
+    <Node
+      selected={selected}
+      onTapToSelect={toggleSelected}
+      onToggleExpandTap={toggleExpanded}
+      onDeleteTap={deleteNode}
+      expanded={expanded}
+      counter={counter}
+      {...restProps}
+    />
   );
 };
 

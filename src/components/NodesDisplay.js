@@ -119,17 +119,14 @@ const NodesDisplay = ({ nodes = [], onAddSubnode, fetchNodes }) => {
   // });
 
   return nodes.map((node) => (
-    <div>
-      <NodeContainer
-        key={node.id}
-        children={node.children}
-        counter={node.children.length}
-        CategoryName={node.CategoryName}
-        id={node.id}
-        onAddSubnode={onAddSubnode}
-        fetchNodes={fetchNodes}
-      />
-    </div>
+    <NodeContainer
+      key={node.id}
+      counter={node.children.length}
+      CategoryName={node.CategoryName}
+      id={node.id}
+      onAddSubnode={onAddSubnode}
+      fetchNodes={fetchNodes}
+    />
   ));
 };
 

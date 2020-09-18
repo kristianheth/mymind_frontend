@@ -16,7 +16,7 @@
   height: 250px;
   border: 2px solid #fff;
   border-radius: 10px;
-  background-color: rgba(255, 0, 64, 0.95);
+  background-color: rgba(255, 0, 64, 0.8);
 }
 
 .login-form__error {
@@ -58,10 +58,10 @@
 }
 
 .login-form__sign-in div {
-  color: #fff;
-  font-weight: 500;
+  color: rgb(48, 48, 48);
+  font-weight: 800;
   margin-bottom: 15px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .login-form__sign-in button {

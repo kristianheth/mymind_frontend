@@ -9,8 +9,6 @@ import AddCategoryNodeFormContainer from './containers/AddCategoryNodeFormContai
 import AddUrlLinkNodeFormContainer from './containers/AddUrlLinkNodeFormContainer';
 import LogOutBtn from './components/LogOutBtn';
 
-import D3Chart from './components/D3Chart';
-
 import NewNodeFormSwitch from './components/NewNodeFormSwitch';
 import ModalWindow from './components/ModalWindow';
 
@@ -19,7 +17,7 @@ import UserContext from './context/userContext';
 
 import './index.css';
 
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 
 const App = () => {
   const [requestStatus, updateRequestStatus] = useState('IDLE');
@@ -126,11 +124,6 @@ const App = () => {
             nodes={nodes}
             fetchNodes={fetchNodes}
           />
-          // <D3Chart
-          //   // openNewNodeDialog={openNewNodeWindow}
-          //   nodes={nodes}
-          //   fetchNodes={fetchNodes}
-          // />
         )}
 
         {requestStatus === 'FAILED' && (

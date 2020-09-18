@@ -1,4 +1,8 @@
+$node-width: 140px;
+$node-height: 140px;
+
 .node__wrapper {
+  //   display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -12,21 +16,22 @@
   color: #000;
   font-weight: 700;
   padding: 5px;
-  width: 140px;
-  height: 140px;
+  width: $node-width;
+  height: $node-height;
   border-radius: 50%;
   background-color: rgba(236, 214, 15, 0.7);
   background-size: cover;
   cursor: pointer;
   margin: 1px 10px 1px 2px;
-}
-.node:hover {
-  background-color: rgba(236, 214, 15, 0.75);
+
+  &:hover {
+    background-color: rgba(236, 214, 15, 0.75);
+  }
 }
 
 .reduce {
-  width: 70px;
-  height: 70px;
+  width: $node-width / 2;
+  height: $node-height / 2;
   font-size: 0.5rem;
 }
 
@@ -38,21 +43,23 @@
   justify-content: center;
   align-content: center;
   z-index: 9999;
-}
-.node-selected button {
-  background-color: rgba(10, 225, 101, 0.9);
-  font-size: 0.65rem;
-  border-radius: 3px;
-  border: 2px solid #fff;
-  align-self: center;
-  margin: 1px;
-  font-weight: 900;
-  color: #fff;
-  cursor: pointer;
-}
-.node-selected button:hover {
-  border: 2px solid #cf1755;
-  background-color: rgba(172, 173, 74, 0.6);
+
+  button {
+    background-color: rgba(10, 225, 101, 0.9);
+    font-size: 0.65rem;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    align-self: center;
+    margin: 1px;
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px solid rgb(207, 23, 85);
+      background-color: rgba(172, 173, 74, 0.6);
+    }
+  }
 }
 
 .node-counter {
@@ -66,30 +73,33 @@
   font-weight: 800;
   font-size: 0.8rem;
   border: solid 3px #fff;
-  background-color: #cf1755;
+  background-color: rgb(207, 23, 85);
   border-radius: 50%;
   height: 40px;
   width: 40px;
   padding: 1px 9px;
   cursor: pointer;
-}
-.node-counter:hover {
-  border: solid 3px rgba(172, 173, 74, 0.8);
+
+  &:hover {
+    border: solid 3px rgba(172, 173, 74, 0.8);
+  }
 }
 
 .node-expanded {
-  background-image: url("./collapse.png");
+  background-image: url('./collapse.png');
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
 
 .node-link a {
+  &:hover,
+  &:active {
+    color: rgb(207, 23, 85);
+    font-weight: 900;
+  }
+
   border-radius: 5px;
-}
-.node-link a:hover, .node-link a:active {
-  color: #cf1755;
-  font-weight: 900;
 }
 
 @media only screen and (max-width: 600px) {
@@ -102,10 +112,11 @@
 
   .node-selected {
     left: 5px;
-  }
-  .node-selected button {
-    font-size: 0.5rem;
-    width: 20px;
+
+    button {
+      font-size: 0.5rem;
+      width: 20px;
+    }
   }
 
   .node-counter {
@@ -114,5 +125,3 @@
     right: 30px;
   }
 }
-
-/*# sourceMappingURL=Node.css.map */
